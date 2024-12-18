@@ -33,7 +33,7 @@ book:
       - exercices/PtFixes/PtFixes.qmd
       - exercices/SIF/SIF.qmd
       - exercices/NumInfo/NumInfo.qmd
-#      - exercices/Crypto1/Crypto1.qmd
+      - exercices/Crypto1/Crypto1.qmd
 #      - exercices/Crypto2/Crypto2.qmd
 #      - exercices/Crypto3/Crypto3.qmd
 #      - exercices/PSto1/PSto1.qmd

@@ -12,17 +12,15 @@ w\left(\begin{array}{c}x\\y\end{array}\right) = \left(\begin{array}{cc}1&-1\\2&0
 \left(\begin{array}{c}x\\y\end{array}\right) + \left(\begin{array}{c}-1\\1\end{array}\right).
 $$
 
-1. Déterminez l'image du rectangle plein $\left\{(x,y) : x \in [0,2] ~\text{et}~y \in [0,1]\right\}$ par $w$.
+#. Déterminez l'image du rectangle plein $\left\{(x,y) : x \in [0,2] ~\text{et}~y \in [0,1]\right\}$ par $w$.
 
-   ::: solution
-   C'est un parallélogramme (plein) de sommets $(-2,1), (-1,1), (1,5)$ et $(0,5)$.
-   :::
+#. Déterminez l'image par $w$ du triangle plein dont les sommets sont donnés par $$A = (1,1), B = (0,0) ~\text{et}~ C = (-1,1).$$
 
-2. Déterminez l'image par $w$ du triangle plein dont les sommets sont donnés par $$A = (1,1), B = (0,0) ~\text{et}~ C = (-1,1).$$
+::: solution
+#. C'est un parallélogramme (plein) de sommets $(-2,1), (-1,1), (1,5)$ et $(0,5).$
 
-   ::: solution
-   C'est un triangle (plein) de sommets $(-1,3), (-1,1)$ et $(-3,-1)$.
-   :::
+#. C'est un triangle (plein) de sommets $(-1,3), (-1,1)$ et $(-3,-1).$
+:::
 
 ## Question 2
 
@@ -46,10 +44,10 @@ $$
 
 ## Question 3
 
-Trouvez l'expression analytique d'une application affine qui envoie le triangle de sommets $A = (-11,3)$, $B = (1,12)$ et $C = (-1,14)$ sur le triangle de sommets $P = (90,-68), Q = (69,-53)$ et $R = (83,-59)$. On sous-entend ici que le point $A$ est envoyé sur $P$, le point $B$ sur $Q$ et le point $C$ sur $R$. Il serait souhaitable d'utiliser un outil informatique pour faire les calculs.
+Trouvez l'expression analytique d'une application affine qui envoie le triangle de sommets $A = (-11,3),B = (1,12)$ et $C = (-1,14)$ sur le triangle de sommets $P = (90,-68), Q = (69,-53)$ et $R = (83,-59).$ On sous-entend ici que le point $A$ est envoyé sur $P$, le point $B$ sur $Q$ et le point $C$ sur $R.$ Il serait souhaitable d'utiliser un outil informatique pour faire les calculs.
 
 ::: solution
-L'expression analytique de la transformation cherchée est :
+L'expression analytique de la transformation cherchée est&nbsp;:
 
 $$
 w\left(\begin{array}{c}x\\y\end{array}\right) = 

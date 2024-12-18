@@ -1,97 +1,182 @@
 ---
-title: "Les équations différentielles"
+title: "13 - Localisation"
 author: "Jérôme Soucy"
+---
+
+Pour répondre aux questions, vous devez considérer que :
+
+- La Terre est sphérique et son rayon est de $6378$ km ;
+- La vitesse du son est de $0.348$ km/s ;
+- La vitesse de la lumière est de $299\,792.458$ km/s.
+
 ---
 
 ## Question 1
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = 2xy$
+Trouvez les coordonnées polaires $(r,\theta)$ des points dont les coordonnées cartésiennes sont données ci-dessous. Donnez l'angle $\theta$ en radians.
 
-::: solution
-D'abord, on réorganise l'équation comme $\frac{1}{y}dy = 2x dx$. Nous avons divisé par $y$, que nous supposons différente de la fonction identiquement nulle pour la suite. Remarquons que la fonction identiquement nulle est une solution de l'équation différentielle.
+1. $(1, 0)$  
+   ::: solution
+   $\left(r, \theta\right) = (1, 0)$
+   :::
 
-Intégrons les deux membres de l'équation : $\int \frac{1}{y}dy = \int 2x dx$. Nous obtenons que$\ln|y| = x^2 + C$. En prenant l'exponentielle, nous obtenons que $|y|=e^{C}e^{x^2}$. Ainsi, $|y|=C_1e^{x^2}$, où $C_1$ est une constante strictement positive. De là nous avons que $y=C_2e^{x^2}$, où $C_2$ est une constante réelle non nulle. Finalement, on se rappelle que $y=0$ est solution de l'équation différentielle de départ, ce qui nous permet d'écrire que l'ensemble des solutions de l'équation différentielle est formé de toutes les fonctions de la forme $y=Ke^{x^2}, K\in\mathbb{R}$.
-:::
+2. $(-8, 8)$  
+   ::: solution
+   $\left(r, \theta\right) = \left(8\sqrt{2}, \dfrac{3\pi}{4}\right)$
+   :::
+
+3. $\left(-5\sqrt{3}, -5\right)$  
+   ::: solution
+   $\left(r, \theta\right) = \left(10, -\dfrac{2\pi}{3}\right)$
+   :::
+
+4. $(0, 0)$  
+   ::: solution
+   Non définies
+   :::
+
+---
 
 ## Question 2
 
-Résoudre l'équation différentielle $$\frac{dy}{dx} = \frac{x}{y}.$$
+Trouvez les coordonnées cartésiennes $(x, y)$ des points dont les coordonnées polaires sont données ci-dessous.
 
-::: solution
-On sépare les variables pour obtenir l'équation $y dy = x dx$. On intègre ensuite les deux membres de l'équation : $\int y dy = \int x dx$. Nous obtenons que $\frac{y^2}{2} = \frac{x^2}{2} + C$. Ainsi, la solution générale est $$y = \pm\sqrt{x^2 + K},$$
-où $K$ est une constante arbitraire.
-:::
+1. $(2, 135^\circ)$  
+   ::: solution
+   $\left(-\sqrt{2}, \sqrt{2}\right)$
+   :::
+
+2. $\left(8, -\dfrac{\pi}{3}\right)$  
+   ::: solution
+   $\left(4, 4\sqrt{3}\right)$
+   :::
+
+---
 
 ## Question 3
 
-Résoudre l'équation différentielle $$\frac{dy}{dx} = \frac{y}{x}.$$
+Trouvez les coordonnées sphériques $(\rho, \theta, \phi)$ des points dont les coordonnées cartésiennes sont données ci-dessous. Donnez les angles en radians.
 
-::: solution
-On sépare les variables pour obtenir l'équation $\frac{dy}{y} = \frac{dx}{x}$. On a divisé par $y$, on supposera donc pour la suite que $y$ n'est pas identiquement nulle. On remarque aussi que la fonction identiquement nulle est une solution de l'équation différentielle.
+1. $\left(-1, 1, \sqrt{2}\right)$  
+   ::: solution
+   $(\rho, \theta, \phi) = \left(2, \dfrac{3\pi}{4}, \dfrac{\pi}{4}\right)$
+   :::
 
-On intègre ensuite les deux membres de l'équation : $\int \frac{dy}{y} = \int \frac{dx}{x}$. Nous obtenons que $\ln|y| = \ln|x| + C$. Comme la fonction $\ln$ est une bijection des réels strictement positifs vers $\mathbb{R}$, il existe un unique $k\in\mathbb{R}_{>0}$ tel que $C=\ln k$. Ainsi,
-$$\ln|y| = \ln|x| + C=\ln|x| + \ln k=\ln k|x|.$$ L'injectivité de la fonction $\ln$ implique que
-$y=\pm k|x|$. Si on trace ces courbes, on constate qu'il s'agit des droites de pente non nulle passant par l'origine. Comme la droite $y(x)=0$ est une solution (on l'a remarqué plus tôt), l'ensemble des solutions consiste à être l'ensemble des droites passant par l'origine, c'est-à-dire aux courbes d'équation $y(x)=Dx, D\in\mathbb{R}$.
-:::
+2. $\left(0, -4, 4\sqrt{3}\right)$  
+   ::: solution
+   $(\rho, \theta, \phi) = \left(8, -\dfrac{\pi}{2}, \dfrac{\pi}{3}\right)$
+   :::
+
+---
 
 ## Question 4
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = y^2$
+1. Trouvez une fonction $f(r)$ qui prend une mesure d'angle en radians et la transforme en degrés.
 
-::: solution
-On constate que $y(x)=0$ est une solution. Maintenant, pour trouver les solutions non nulles, divisons par $y^2$ pour séparer les variables. On obtient ainsi que
-$$\frac{dy}{y^2} = dx.$$
-En intégrant chacun des membres de l'équation, nous obtenons que
-$$-\frac{1}{y} = x + C,$$
-où $C$ est une constante réelle arbitraire. On isole par la suite $y$, pour obtenir une solution de la forme
-$$y = -\frac{1}{x + K},$$
-où $K$ est une constante réelle arbitraire.
-:::
+2. Trouvez une fonction $g(r)$ qui prend une mesure d'angle en degrés et la transforme en radians.
+
+3. Trouvez une fonction $f(d, m, s)$ qui transforme un angle en degrés-minutes-secondes vers un angle en radians. On se souviendra qu’un degré contient 60 minutes, et qu’une minute contient 60 secondes.
+
+   ::: solution
+   $f(d, m, s) = \dfrac{\pi}{180}\left(d + \dfrac{m}{60} + \dfrac{s}{3600}\right)$
+   :::
+
+---
 
 ## Question 5
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = e^{x-y}$
+En vous référant au texte *La traversée du Grand LacUne*, déterminez la position du bateau dans chacune des situations ci-dessous. Les coordonnées de $P_i$ correspondent à celle du $i^\text{e}$ port, alors que $t_i$ est le temps de parcours du son entre le canon du $i^\text{e}$ port et le bateau.
 
-::: solution
-Pour résoudre cette équation, commençons par réorganiser les termes afin de séparer les variables. En multipliant chaque membre par $e^y$, nous obtenons
-$$e^y dy = e^x dx.$$
-En intégrant chacun des membres de l'équation, nous obtenons que
-$$e^y = e^x + C,$$
-où $C$ est une constante réelle arbitraire. On isole par la suite $y$ en appliquant le logarithme naturel de chaque côté, pour obtenir une solution de la forme
-$$y(x) = \ln(e^x + C).$$
-:::
+\[
+\begin{align*}
+P1 &= (0, 0)     & t_1 &= 126\ \text{s} \\
+P2 &= (50, 70)   & t_2 &= 157\ \text{s} \\
+P3 &= (90, 20)   & t_3 &= 173\ \text{s}
+\end{align*}
+\]
+
+1. Vous connaissez les coordonnées de $P_1$ et $P_2$, de même que les temps $t_1$ et $t_2$. Vous savez de plus qu’il n’y a pas d’erreur d’horloge.
+
+   ::: solution
+   Il y a deux solutions possibles :
+   \[
+   (2.05585682;\ 43.79977804) \quad \text{et} \quad (40.76545810;\ 16.15006284).
+   \]
+   :::
+
+2. Vous connaissez les coordonnées de tous les ports, de même que les temps de parcours du son de tous les canons. Cependant, vous savez qu’il y a une erreur d’horloge. Donnez aussi l’erreur de l’horloge.
+
+   ::: solution
+   On obtient deux valeurs possibles pour l’erreur de l’horloge : $10.83394095$ s et $287.3746477$ s. La première valeur semble la plus plausible, car sinon les temps mesurés seraient inférieurs à l’erreur de l’horloge. On en conclut donc que la position est $(33.59659918;\ 21.85171980)$.
+   :::
+
+---
 
 ## Question 6
-Lorsqu'une personne avale une substance toxique, son foie tente de l'éliminer. Généralement, le taux d'élimination de la quantité de substance encore présente dans l'organisme au temps $t$ --- que nous noterons $Q(t)$ --- est proportionnel à la quantité de substance encore présente dans l'organisme au temps $t$. Au temps $t=0$, Jocelyn a avalé une quantité $Q_0$ d'un liquide toxique. Après 3 heures, on a estimé que son foie avait éliminé 50\% du liquide. D'après ce modèle, combien d'heures se seront écoulées entre le moment où Jocelyn a avalé le produit et celui où il en aura éliminé 90\%?
+
+On s’intéresse ici à l’imprécision sur la position d’un point dans le plan.
+
+1. Trouvez les coordonnées d’un point $P$ situé à $147$ km du point $(50, 0)$ et à $139.4$ km du point $(0, 50)$.
+
+   ::: solution
+   $(-83.437779;\ -61.671379)$ et $(111.671379;\ 133.437779)$
+   :::
+
+2. Si le point $P$ est situé à $147$ km $\pm$ $0.1$ km du point $(50, 0)$ et à $139.4$ km $\pm$ $0.1$ km du point $(0, 50)$, quelle est l’erreur maximale qu’on commet sur la position de $P$ en utilisant la réponse obtenue en (a) ?
+
+   ::: solution
+   Pour le point situé près de $(111.671379;\ 133.437779)$, l’erreur maximale correspond à :
+   \[
+   \max\{0.4073064796;\ 0.4071887791\} = 0.4073064796.
+   \]
+   Pour le point situé près de $(-83.437779;\ -61.671379)$, l’erreur maximale correspond à :
+   \[
+   \max\{0.407306481;\ 0.407188782\} = 0.407306481.
+   \]
+   :::
+
+3. Trouvez les coordonnées d’un point $Q$ situé à $147$ km du point $(50, 0)$ et à $138.8$ km du point $(50, -100)$.
+
+4. Si le point $Q$ est situé à $147$ km $\pm$ $0.1$ km du point $(50, 0)$ et à $138.8$ km $\pm$ $0.1$ km du point $(50, -100)$, quelle est l’erreur maximale qu’on commet sur la position de $Q$ en utilisant la réponse obtenue en (c) ?
+
+5. Est-ce que l’erreur maximale sur l’emplacement est plus grande pour le point $P$ de la partie (b) ou pour le point $Q$ de la partie (d) ? Pourquoi en est-il ainsi ?
+
+   ::: solution
+   Pour trouver les coordonnées du point $Q$, on procède comme pour le point $P$. On trouvera que l’erreur d’estimation de la position est moins grande, car les cercles s’intersectent à un angle plus proche de $90^\circ$.
+   :::
+
+---
 
 ## Question 7
-Un vêtement pesant 50 grammes est plongée dans un bassin d'eau. En le sortant du bassin, au temps $t=0$, sa masse est de 200 grammes. On l'étend immédiatement sur une corde à linge pour qu'il sèche. On observe qu'après 180 minutes, sa masse est de 100 grammes. Combien de minutes se seront écoulées entre le moment où le vêtement est sorti du bassin et celui où il aura évacué 99\% de l'eau qu'il contenait initialement? Arrondissez à la minute. Pour répondre à cette question, on fera l'hypothèse que le taux d'évaporation d'eau dans le vêtement est proportionnel à la quantité d'eau présente dans celui-ci.
+
+Soit $P$ un point de l’espace dont les coordonnées géocentriques sont $(36000,\ 10000,\ 15000)$, données en kilomètres.
+
+1. Quelles sont les coordonnées sphériques de $P$ ?
+
+   ::: solution
+   $(\rho;\ \theta;\ \phi) = (40261.644;\ 0.270946850;\ 0.381769355)$
+   :::
+
+2. À quelle altitude, par rapport à la Terre, ce point est-il situé ?
+
+   ::: solution
+   $33\,883.644$ km
+   :::
+
+---
 
 ## Question 8
-Un réservoir contient initialement 100 kg de lait écrémé (le pourcentage de matière grasse du lait écrémé est de 0 %). Au temps $t=0$, on commence à y verser, à un taux constant de 10 kg/minute, du lait dont le pourcentage de matière grasse est de 4 %. Au même moment, un drain évacue le lait du réservoir vers le camion réfrigérée, à un taux constant de 10 kg/minute. Pour répondre à cette question, on fera l'hypothèse que le mélangeur du réservoir permet de garder son contenu homogène.
 
-#. Soit $M$ la masse (en kg) de matière grasse dans le réservoir en fonction du temps $t$ (en minutes). Trouvez la fonction $M(t)$.
-#. Évaluez $\lim_{t\rightarrow\infty}M(t)$.
+Lors de la 28$^\text{e}$ assemblée générale de l’Union astronomique internationale, l’unité astronomique (ua) a été définie comme valant exactement $149\,597\,870\,700$ m. Il s'agit grosso modo de la distance entre la Terre et le Soleil.
 
-:::{.solution}
-#. Pendant un petit intervalle de temps $\Delta t$ minutes, il entre 10$\Delta t$ kilogrammes de lait, qui contient une proportion 4/100 de matières grasses. Donc la masse de matières grasses entrant est
-   $$M_{\text{entrant}} = \frac{4}{100} \times 10\Delta t = 0{,}4 \Delta t$$
+1. En arrondissant à la seconde, combien de temps met la lumière à nous parvenir du Soleil ?
 
-   Pendant le même intervalle, il sort une masse $10\Delta t$ de lait. La proportion de matières grasses dans ce lait est $M(t)/100$. Ainsi, on a $$M_{\text{entrant}} = \frac{M(t)}{100} \times 10\Delta t = \frac{M(t)}{10} \Delta t.$$
+   ::: solution
+   $8$ minutes $19$ secondes
+   :::
 
-   Le changement dans $M(t)$ est donc
-   $$\Delta M = M_{\text{entrant}} - M_{\text{sortant}} = 0{,}4 \Delta t - \frac{M(t)}{10} \Delta t.$$
-   Ainsi 
-   $$\frac{\Delta M}{\Delta t} = 0{,}4 - \frac{M(t)}{10}.$$
-   Quand $\Delta t$ tend vers 0, le membre de gauche tend vers $M'(t)$, et on obtient
-   $$M'(t) = 0{,}4 - \frac{M(t)}{10}.$$
-   Cette équation est séparable. On a
-   $$\frac{dM}{0{,}4 - \frac{M}{10}} = dt,$$
-   qui est équivalente à 
-   $$\int \frac{10dM}{4 - M} = \int dt.$$
-   On intègre et on obtient que $$-10 \ln|4 - M| = t + C,$$ équation qui est équivalente à $$|4 - M| = ke^{-t/10}.$$
-   Puisque $M(0) = 0$, on en déduit que $k = 4$ et finalement $$M(t) = 4 - 4e^{-t/10}.$$
+2. Combien d'unités astronomiques correspondent à une année-lumière ? Rappelons qu'une année-lumière correspond à la distance parcourue par la lumière en une année.
 
-#. Puisque $e^{-t/10} \to 0$ quand $t \to \infty$, on a $\lim_{t \to \infty} M(t) = 4$.
-   Intuitivement, ce résultat est évident car à la longue, on s'attend à ce que l'état initial devienne négligeable et que la proportion de gras dans le lait du réservoir soit la même que celle du lait qu'on y ajoute.
-:::
+   ::: solution
+   $63\,241$ ua
+   :::

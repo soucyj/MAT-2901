@@ -4,293 +4,602 @@
     "href": "index.html",
     "title": "MAT-2901 : Mathématiques et technologie",
     "section": "",
-    "text": "Présentation\nBienvenue sur un site web complémentaire au site monPortail du cours MAT-2901 : Mathématiques et technologie, à l’Université Laval.\nCe site contient des séries d’exercices conçues pour accompagner les étudiants et étudiantes dans le cours. Chaque série d’exercices est soigneusement élaborée pour approfondir votre compréhension des concepts clés et vous préparer aux évaluations."
+    "text": "Présentation\nBienvenue sur un site web complémentaire au site monPortail du cours MAT-2901 : Mathématiques et technologie, à l’Université Laval.\nCe site contient des séries d’exercices conçues pour accompagner les étudiants et étudiantes dans le cours. Chaque série d’exercices est soigneusement élaborée pour approfondir votre compréhension des concepts clés et vous préparer aux évaluations.",
+    "crumbs": [
+      "Présentation"
+    ]
   },
   {
     "objectID": "index.html#licence-et-attributions",
     "href": "index.html#licence-et-attributions",
     "title": "MAT-2901 : Mathématiques et technologie",
     "section": "Licence et attributions",
-    "text": "Licence et attributions\nCe site et son contenu sont mis à disposition sous licence Creative Commons Attribution - Pas d’Utilisation Commerciale (CC BY-NC).\n\n\n\n\n\n\nDroits d’utilisation\n\n\n\nVous êtes libre de :\n\nPartager, copier et redistribuer le contenu\nAdapter et transformer le contenu\n\nÀ condition de :\n\nCréditer la source en citant l’auteur du présent document avec un lien vers ce site\nNe pas faire d’usage commercial du contenu\n\nUne partie du code présenté sur ce site a été généré avec l’assistance de l’intelligence artificielle Claude (Anthropic) et ChatGPT-4o (OpenAI), tout en étant vérifié et adapté pour garantir son exactitude et sa pertinence pédagogique.\n\n\n\n\n\n\n\n\n\nLicence Creative Commons BY-NC\n\n\n\n\n\n\n\nGénéré avec assistance IA\n\n\n\n\nFigure 1: Certains éléments de code de ce site ont été générés par l’IA. Vous êtes libre d’utiliser le contenu de ce site dans la mesure où vous citez la source et n’en tirez pas de bénéfice financier."
+    "text": "Licence et attributions\nCe site et son contenu sont mis à disposition sous licence Creative Commons Attribution - Pas d’Utilisation Commerciale (CC BY-NC).\n\n\n\n\n\n\nDroits d’utilisation\n\n\n\nVous êtes libre de :\n\nPartager, copier et redistribuer le contenu\nAdapter et transformer le contenu\n\nÀ condition de :\n\nCréditer la source en citant l’auteur du présent document avec un lien vers ce site\nNe pas faire d’usage commercial du contenu\n\nUne partie du code présenté sur ce site a été généré avec l’assistance de l’intelligence artificielle Claude (Anthropic) et ChatGPT-4o (OpenAI), tout en étant vérifié et adapté pour garantir son exactitude et sa pertinence pédagogique.\n\n\n\n\n\n\n\n\n\n\nLicence Creative Commons BY-NC\n\n\n\n\n\n\n\nGénéré avec assistance IA\n\n\n\n\n\n\nFigure 1: Certains éléments de code de ce site ont été générés par l’IA. Vous êtes libre d’utiliser le contenu de ce site dans la mesure où vous citez la source et n’en tirez pas de bénéfice financier.",
+    "crumbs": [
+      "Présentation"
+    ]
   },
   {
     "objectID": "theorie/TIntroFractales/TIntroFractales.html",
     "href": "theorie/TIntroFractales/TIntroFractales.html",
     "title": "Introduction aux fractales",
     "section": "",
-    "text": "Un ballon est lancé verticalement vers le haut avec une vitesse initiale de 10 m/s. En tenant compte de la résistance de l’air, sa hauteur (en mètres) après \\(t\\) secondes est donnée par la fonction :\n\\[h(t) = 50\\ln(\\cosh(0.2t)) + 10t - 4.9t^2\\]\nÀ quel moment le ballon atteint-il son altitude maximale ?\n\n1. Visualisation du problème\nCommençons par visualiser la hauteur du ballon en fonction du temps :\n\n\nCode\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Fonction hauteur\nh &lt;- function(t) {\n  50 * log(cosh(0.2 * t)) + 10 * t - 4.9 * t^2\n}\n\n# Création des données\nt_vals &lt;- seq(0, 3, by = 0.01)\nheight_data &lt;- data.frame(\n  t = t_vals,\n  height = sapply(t_vals, h)\n)\n\n# Graphique\nggplot(height_data, aes(x = t, y = height)) +\n  geom_line(color = \"blue\", size = 1) +\n  labs(x = \"Temps (s)\", y = \"Hauteur (m)\") +\n  theme_minimal() +\n  ggtitle(\"Trajectoire du ballon\")\n\n\n\n\n\nFigure 1.1: Hauteur du ballon en fonction du temps\n\n\n\n\n\n\n2. La vitesse du ballon\nLa vitesse est la dérivée de la hauteur. Pour trouver le point culminant, nous devons trouver quand la vitesse est nulle.\n\\[v(t) = h'(t) = 10\\tanh(0.2t) + 10 - 9.8t\\]\nVisualisons la vitesse :\n\n\nCode\n# Fonction vitesse\nv &lt;- function(t) {\n  10 * tanh(0.2 * t) + 10 - 9.8 * t\n}\n\n# Création des données\nvelocity_data &lt;- data.frame(\n  t = t_vals,\n  velocity = sapply(t_vals, v)\n)\n\n# Graphique\nggplot(velocity_data, aes(x = t, y = velocity)) +\n  geom_line(color = \"red\", size = 1) +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  labs(x = \"Temps (s)\", y = \"Vitesse (m/s)\") +\n  theme_minimal() +\n  ggtitle(\"Vitesse du ballon\")\n\n\n\n\n\nFigure 1.2: Vitesse du ballon en fonction du temps\n\n\n\n\n\n\n3. Méthode de Newton-Raphson\nPour trouver quand la vitesse est nulle, nous devons résoudre : \\[f(t) = 10\\tanh(0.2t) + 10 - 9.8t = 0\\]\nLa dérivée de cette fonction est : \\[f'(t) = 2\\,\\text{sech}^2(0.2t) - 9.8\\]\nImplémentons la méthode de Newton-Raphson :\n\n\nCode\n# Fonction f(t) et sa dérivée\nf &lt;- function(t) {\n  10 * tanh(0.2 * t) + 10 - 9.8 * t\n}\n\nf_prime &lt;- function(t) {\n  2 * (1 / cosh(0.2 * t))^2 - 9.8\n}\n\n# Fonction Newton-Raphson\nnewton_raphson &lt;- function(x0, tolerance = 1e-6, max_iter = 100) {\n  x &lt;- x0\n  iterations &lt;- data.frame(\n    iteration = 0,\n    x = x0,\n    f_x = f(x0)\n  )\n  \n  for (i in 1:max_iter) {\n    x_new &lt;- x - f(x) / f_prime(x)\n    \n    iterations &lt;- rbind(iterations, \n                       data.frame(iteration = i,\n                                x = x_new,\n                                f_x = f(x_new)))\n    \n    if (abs(x_new - x) &lt; tolerance) {\n      break\n    }\n    x &lt;- x_new\n  }\n  \n  return(iterations)\n}\n\n# Application avec x0 = 1\nresultats &lt;- newton_raphson(1)\n\n# Affichage des résultats\nknitr::kable(resultats,\n             col.names = c(\"Itération\", \"t (secondes)\", \"f(t)\"),\n             digits = 6,\n             caption = \"Résultats de la méthode de Newton-Raphson\")\n\n\n\nRésultats de la méthode de Newton-Raphson\n\n\nItération\nt (secondes)\nf(t)\n\n\n\n\n0\n1.000000\n2.173753\n\n\n1\n1.275930\n-0.006241\n\n\n2\n1.275143\n0.000000\n\n\n3\n1.275143\n0.000000\n\n\n\n\n\n\n\n4. Vérification graphique\nVisualisons la convergence sur le graphique de la vitesse :\n\n\nCode\n# Filtrer les données pour l'intervalle [1, 1.5]\nvelocity_data_zoom &lt;- velocity_data %&gt;% \n  filter(t &gt;= 1 & t &lt;= 1.5)\n\n# Ajout des points d'itération au graphique de vitesse avec zoom\nggplot(velocity_data_zoom, aes(x = t, y = velocity)) +\n  geom_line(color = \"red\", size = 1) +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  geom_point(data = resultats, \n             aes(x = x, y = f_x),\n             color = \"blue\",\n             size = 3) +\n  geom_path(data = resultats, \n            aes(x = x, y = f_x),\n            color = \"blue\",\n            arrow = arrow(length = unit(0.2, \"cm\")),\n            size = 0.5) +\n  labs(x = \"Temps (s)\", y = \"Vitesse (m/s)\") +\n  scale_x_continuous(limits = c(1, 1.5),\n                    breaks = seq(1, 1.5, 0.1)) +\n  theme_minimal() +\n  ggtitle(\"Convergence de la méthode de Newton-Raphson (zoom)\") +\n  theme(axis.text = element_text(size = 10),\n        axis.title = element_text(size = 12))\n\n\n\n\n\nFigure 1.3: Convergence de la méthode de Newton-Raphson\n\n\n\n\n\n\nConclusion\nLa méthode de Newton-Raphson converge rapidement vers la solution : le ballon atteint son altitude maximale après environ 1.275 secondes.\nÀ cet instant, l’altitude du ballon est de 6.39 mètres."
+    "text": "Un ballon est lancé verticalement vers le haut avec une vitesse initiale de 10 m/s. En tenant compte de la résistance de l’air, sa hauteur (en mètres) après \\(t\\) secondes est donnée par la fonction :\n\\[h(t) = 50\\ln(\\cosh(0.2t)) + 10t - 4.9t^2\\]\nÀ quel moment le ballon atteint-il son altitude maximale ?\n\n1. Visualisation du problème\nCommençons par visualiser la hauteur du ballon en fonction du temps :\n\n\nCode\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Fonction hauteur\nh &lt;- function(t) {\n  50 * log(cosh(0.2 * t)) + 10 * t - 4.9 * t^2\n}\n\n# Création des données\nt_vals &lt;- seq(0, 3, by = 0.01)\nheight_data &lt;- data.frame(\n  t = t_vals,\n  height = sapply(t_vals, h)\n)\n\n# Graphique\nggplot(height_data, aes(x = t, y = height)) +\n  geom_line(color = \"blue\", size = 1) +\n  labs(x = \"Temps (s)\", y = \"Hauteur (m)\") +\n  theme_minimal() +\n  ggtitle(\"Trajectoire du ballon\")\n\n\n\n\n\n\n\n\nFigure 1.1: Hauteur du ballon en fonction du temps\n\n\n\n\n\n\n\n2. La vitesse du ballon\nLa vitesse est la dérivée de la hauteur. Pour trouver le point culminant, nous devons trouver quand la vitesse est nulle.\n\\[v(t) = h'(t) = 10\\tanh(0.2t) + 10 - 9.8t\\]\nVisualisons la vitesse :\n\n\nCode\n# Fonction vitesse\nv &lt;- function(t) {\n  10 * tanh(0.2 * t) + 10 - 9.8 * t\n}\n\n# Création des données\nvelocity_data &lt;- data.frame(\n  t = t_vals,\n  velocity = sapply(t_vals, v)\n)\n\n# Graphique\nggplot(velocity_data, aes(x = t, y = velocity)) +\n  geom_line(color = \"red\", size = 1) +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  labs(x = \"Temps (s)\", y = \"Vitesse (m/s)\") +\n  theme_minimal() +\n  ggtitle(\"Vitesse du ballon\")\n\n\n\n\n\n\n\n\nFigure 1.2: Vitesse du ballon en fonction du temps\n\n\n\n\n\n\n\n3. Méthode de Newton-Raphson\nPour trouver quand la vitesse est nulle, nous devons résoudre : \\[f(t) = 10\\tanh(0.2t) + 10 - 9.8t = 0\\]\nLa dérivée de cette fonction est : \\[f'(t) = 2\\,\\text{sech}^2(0.2t) - 9.8\\]\nImplémentons la méthode de Newton-Raphson :\n\n\nCode\n# Fonction f(t) et sa dérivée\nf &lt;- function(t) {\n  10 * tanh(0.2 * t) + 10 - 9.8 * t\n}\n\nf_prime &lt;- function(t) {\n  2 * (1 / cosh(0.2 * t))^2 - 9.8\n}\n\n# Fonction Newton-Raphson\nnewton_raphson &lt;- function(x0, tolerance = 1e-6, max_iter = 100) {\n  x &lt;- x0\n  iterations &lt;- data.frame(\n    iteration = 0,\n    x = x0,\n    f_x = f(x0)\n  )\n  \n  for (i in 1:max_iter) {\n    x_new &lt;- x - f(x) / f_prime(x)\n    \n    iterations &lt;- rbind(iterations, \n                       data.frame(iteration = i,\n                                x = x_new,\n                                f_x = f(x_new)))\n    \n    if (abs(x_new - x) &lt; tolerance) {\n      break\n    }\n    x &lt;- x_new\n  }\n  \n  return(iterations)\n}\n\n# Application avec x0 = 1\nresultats &lt;- newton_raphson(1)\n\n# Affichage des résultats\nknitr::kable(resultats,\n             col.names = c(\"Itération\", \"t (secondes)\", \"f(t)\"),\n             digits = 6,\n             caption = \"Résultats de la méthode de Newton-Raphson\")\n\n\n\nRésultats de la méthode de Newton-Raphson\n\n\nItération\nt (secondes)\nf(t)\n\n\n\n\n0\n1.000000\n2.173753\n\n\n1\n1.275930\n-0.006241\n\n\n2\n1.275143\n0.000000\n\n\n3\n1.275143\n0.000000\n\n\n\n\n\n\n\n4. Vérification graphique\nVisualisons la convergence sur le graphique de la vitesse :\n\n\nCode\n# Filtrer les données pour l'intervalle [1, 1.5]\nvelocity_data_zoom &lt;- velocity_data %&gt;% \n  filter(t &gt;= 1 & t &lt;= 1.5)\n\n# Ajout des points d'itération au graphique de vitesse avec zoom\nggplot(velocity_data_zoom, aes(x = t, y = velocity)) +\n  geom_line(color = \"red\", size = 1) +\n  geom_hline(yintercept = 0, linetype = \"dashed\") +\n  geom_point(data = resultats, \n             aes(x = x, y = f_x),\n             color = \"blue\",\n             size = 3) +\n  geom_path(data = resultats, \n            aes(x = x, y = f_x),\n            color = \"blue\",\n            arrow = arrow(length = unit(0.2, \"cm\")),\n            size = 0.5) +\n  labs(x = \"Temps (s)\", y = \"Vitesse (m/s)\") +\n  scale_x_continuous(limits = c(1, 1.5),\n                    breaks = seq(1, 1.5, 0.1)) +\n  theme_minimal() +\n  ggtitle(\"Convergence de la méthode de Newton-Raphson (zoom)\") +\n  theme(axis.text = element_text(size = 10),\n        axis.title = element_text(size = 12))\n\n\n\n\n\n\n\n\nFigure 1.3: Convergence de la méthode de Newton-Raphson\n\n\n\n\n\n\n\nConclusion\nLa méthode de Newton-Raphson converge rapidement vers la solution : le ballon atteint son altitude maximale après environ 1.275 secondes.\nÀ cet instant, l’altitude du ballon est de 6.39 mètres.",
+    "crumbs": [
+      "Théorie",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction aux fractales</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/IntroFractales/IntroFractales.html",
+    "href": "exercices/IntroFractales/IntroFractales.html",
+    "title": "01 - Introduction aux fractales",
+    "section": "",
+    "text": "Question 1\nOn construit un flocon de von Koch à partir d’un triangle équilatéral dont les côtés sont de longueur 1.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>01 - Introduction aux fractales</span>"
+    ]
   },
   {
     "objectID": "exercices/IntroFractales/IntroFractales.html#question-1",
     "href": "exercices/IntroFractales/IntroFractales.html#question-1",
     "title": "01 - Introduction aux fractales",
-    "section": "Question 1",
-    "text": "Question 1\nOn construit un flocon de von Koch à partir d’un triangle équilatéral dont les côtés sont de longueur 1.\n\n\n\nFlocon de von Koch\n\n\n\nMontrez que le périmètre du flocon est infini.\nDéterminez l’aire du flocon.\n\n\nSolution. \n\nLe périmètre du flocon est multiplié par \\(\\frac{4}{3}\\) à chaque étape de la construction. Par conséquent, le périmètre est infini.\nL’aire du flocon est donnée par : \\[\n\\text{Aire finale} = \\frac{8}{5} A_0,\n\\] où \\(A_0\\) est l’aire du triangle équilatéral initial. Par exemple, pour un triangle dont les côtés mesurent 1, l’aire du flocon est \\(\\frac{2\\sqrt{3}}{5}\\)."
+    "section": "",
+    "text": "Flocon de von Koch\n\n\n\nMontrez que le périmètre du flocon est infini.\nDéterminez l’aire du flocon.\n\n\nSolution. \n\nLe périmètre du flocon est multiplié par \\(\\frac{4}{3}\\) à chaque étape de la construction. Par conséquent, le périmètre est infini.\nL’aire du flocon est donnée par : \\[\n\\text{Aire finale} = \\frac{8}{5} A_0,\n\\] où \\(A_0\\) est l’aire du triangle équilatéral initial. Par exemple, pour un triangle dont les côtés mesurent 1, l’aire du flocon est \\(\\frac{2\\sqrt{3}}{5}\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>01 - Introduction aux fractales</span>"
+    ]
   },
   {
     "objectID": "exercices/IntroFractales/IntroFractales.html#question-2",
     "href": "exercices/IntroFractales/IntroFractales.html#question-2",
     "title": "01 - Introduction aux fractales",
     "section": "Question 2",
-    "text": "Question 2\nOn construit un flocon de neige à partir d’un carré de côté de longueur \\(a\\).\n\n\n\nFlocon de neige\n\n\n\nTrouvez l’aire du flocon après \\(n\\) étapes.\nDéterminez la dimension de similitude du flocon de neige.\n\n\nSolution. \n\nSi \\(A_1 = a^2\\) est l’aire après une étape, nous avons : \\[\nA_n = \\left(\\frac{5}{9}\\right)^{n-1} a^2.\n\\]\nLa dimension de similitude est donnée par : \\[\n\\frac{\\ln 5}{\\ln 3}.\n\\]"
+    "text": "Question 2\nOn construit un flocon de neige à partir d’un carré de côté de longueur \\(a\\).\n\n\n\nFlocon de neige\n\n\n\nTrouvez l’aire du flocon après \\(n\\) étapes.\nDéterminez la dimension de similitude du flocon de neige.\n\n\nSolution. \n\nSi \\(A_1 = a^2\\) est l’aire après une étape, nous avons : \\[\nA_n = \\left(\\frac{5}{9}\\right)^{n-1} a^2.\n\\]\nLa dimension de similitude est donnée par : \\[\n\\frac{\\ln 5}{\\ln 3}.\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>01 - Introduction aux fractales</span>"
+    ]
   },
   {
     "objectID": "exercices/IntroFractales/IntroFractales.html#question-3",
     "href": "exercices/IntroFractales/IntroFractales.html#question-3",
     "title": "01 - Introduction aux fractales",
     "section": "Question 3",
-    "text": "Question 3\nSoit \\(E\\) l’ensemble des nombres réels dans l’intervalle \\([0, 1]\\) dont toutes les décimales sont paires.\n\nExpliquez comment on peut contruire l’ensemble \\(E\\) et débutant avec l’intervalle \\([0, 1]\\) duquel on retranche, à chaque étape, des intervalles.\nExpliquez pourquoi \\(E\\) est autosimilaire puis calculez sa dimension de similitude.\n\n\nSolution. \n\nOn construit \\(E\\) en retirant, à l’étape \\(n\\), les nombres dont la \\(n^\\text{e}\\) décimale est impaire.\nSa dimension de similitude est : \\[\n\\frac{\\ln 5}{\\ln 10}.\n\\]"
+    "text": "Question 3\nSoit \\(E\\) l’ensemble des nombres réels dans l’intervalle \\([0, 1]\\) dont toutes les décimales sont paires.\n\nExpliquez comment on peut contruire l’ensemble \\(E\\) et débutant avec l’intervalle \\([0, 1]\\) duquel on retranche, à chaque étape, des intervalles.\nExpliquez pourquoi \\(E\\) est autosimilaire puis calculez sa dimension de similitude.\n\n\nSolution. \n\nOn construit \\(E\\) en retirant, à l’étape \\(n\\), les nombres dont la \\(n^\\text{e}\\) décimale est impaire.\nSa dimension de similitude est : \\[\n\\frac{\\ln 5}{\\ln 10}.\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>01 - Introduction aux fractales</span>"
+    ]
   },
   {
     "objectID": "exercices/IntroFractales/IntroFractales.html#question-4",
     "href": "exercices/IntroFractales/IntroFractales.html#question-4",
     "title": "01 - Introduction aux fractales",
     "section": "Question 4",
-    "text": "Question 4\nPour chacun des ensembles autosimilaires suivants, déterminez son aire, de même que sa dimension de similitude.\n\nLe triangle de Sierpiński construit à partir d’un triangle équilatéral dont les côtés sont de longueur 1.\nLe tapis de Sierpiński construit à partir d’un carré dont les côtés sont de longueur 1.\n\n\nSolution. \n\nL’aire est nulle et la dimension de similitude est \\(\\frac{\\ln 3}{\\ln 2}\\).\nL’aire est nulle et la dimension de similitude est \\(\\frac{\\ln 8}{\\ln 3}\\)."
+    "text": "Question 4\nPour chacun des ensembles autosimilaires suivants, déterminez son aire, de même que sa dimension de similitude.\n\nLe triangle de Sierpiński construit à partir d’un triangle équilatéral dont les côtés sont de longueur 1.\nLe tapis de Sierpiński construit à partir d’un carré dont les côtés sont de longueur 1.\n\n\nSolution. \n\nL’aire est nulle et la dimension de similitude est \\(\\frac{\\ln 3}{\\ln 2}\\).\nL’aire est nulle et la dimension de similitude est \\(\\frac{\\ln 8}{\\ln 3}\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>01 - Introduction aux fractales</span>"
+    ]
   },
   {
     "objectID": "exercices/IntroFractales/IntroFractales.html#question-5",
     "href": "exercices/IntroFractales/IntroFractales.html#question-5",
     "title": "01 - Introduction aux fractales",
     "section": "Question 5",
-    "text": "Question 5\nPour chacun des ensembles autosimilaires suivants, déterminez son volume, de même que sa dimension de similitude.\n\nL’éponge de Menger construite à partir d’un cube dont les arêtes sont de longueur 1.\nLe tétraèdre de Sierpiński construit à partir d’un tétraèdre dont les arêtes sont de longueur 1.\n\n\nSolution. \n\nLe volume est nul et la dimension de similitude est \\(\\frac{\\ln 20}{\\ln 3}\\).\nLe volume est nul et la dimension de similitude est \\(2\\)."
+    "text": "Question 5\nPour chacun des ensembles autosimilaires suivants, déterminez son volume, de même que sa dimension de similitude.\n\nL’éponge de Menger construite à partir d’un cube dont les arêtes sont de longueur 1.\nLe tétraèdre de Sierpiński construit à partir d’un tétraèdre dont les arêtes sont de longueur 1.\n\n\nSolution. \n\nLe volume est nul et la dimension de similitude est \\(\\frac{\\ln 20}{\\ln 3}\\).\nLe volume est nul et la dimension de similitude est \\(2\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>01 - Introduction aux fractales</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/TransPlan/TransPlan.html",
+    "href": "exercices/TransPlan/TransPlan.html",
+    "title": "02 - Transformations du plan",
+    "section": "",
+    "text": "Question 1\nSoit l’application affine dont la représentation analytique est donnée par\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) = \\left(\\begin{array}{cc}1&-1\\\\2&0\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) + \\left(\\begin{array}{c}-1\\\\1\\end{array}\\right).\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-1",
     "href": "exercices/TransPlan/TransPlan.html#question-1",
     "title": "02 - Transformations du plan",
-    "section": "Question 1",
-    "text": "Question 1\nSoit l’application affine dont la représentation analytique est donnée par\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) = \\left(\\begin{array}{cc}1&-1\\\\2&0\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) + \\left(\\begin{array}{c}-1\\\\1\\end{array}\\right).\n\\]\n\nDéterminez l’image du rectangle plein \\(\\left\\{(x,y) : x \\in [0,2] ~\\text{et}~y \\in [0,1]\\right\\}\\) par \\(w\\).\n\nSolution. C’est un parallélogramme (plein) de sommets \\((-2,1), (-1,1), (1,5)\\) et \\((0,5)\\).\n\nDéterminez l’image par \\(w\\) du triangle plein dont les sommets sont donnés par \\[A = (1,1), B = (0,0) ~\\text{et}~ C = (-1,1).\\]\n\nSolution. C’est un triangle (plein) de sommets \\((-1,3), (-1,1)\\) et \\((-3,-1)\\)."
+    "section": "",
+    "text": "Déterminez l’image du rectangle plein \\(\\left\\{(x,y) : x \\in [0,2] ~\\text{et}~y \\in [0,1]\\right\\}\\) par \\(w\\).\nDéterminez l’image par \\(w\\) du triangle plein dont les sommets sont donnés par \\[A = (1,1), B = (0,0) ~\\text{et}~ C = (-1,1).\\]\n\n\nSolution. \n\nC’est un parallélogramme (plein) de sommets \\((-2,1), (-1,1), (1,5)\\) et \\((0,5).\\)\nC’est un triangle (plein) de sommets \\((-1,3), (-1,1)\\) et \\((-3,-1).\\)",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-2",
     "href": "exercices/TransPlan/TransPlan.html#question-2",
     "title": "02 - Transformations du plan",
     "section": "Question 2",
-    "text": "Question 2\nTrouvez l’expression analytique de l’isométrie qui envoie le triangle de la figure 1 sur celui de la figure 2.\n\n\n\nFigure 1\n\n\n\n\n\nFigure 2\n\n\n\nSolution. L’expression analytique d’une telle isométrie peut être exprimée de la façon suivante :\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-\\frac{\\sqrt{2}}{2}&\\frac{\\sqrt{2}}{2}\\\\\n-\\frac{\\sqrt{2}}{2}&-\\frac{\\sqrt{2}}{2}\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}1-\\frac{\\sqrt{2}}{4}\\\\\\frac{\\sqrt{2}}{4}\\end{array}\\right).\n\\]"
+    "text": "Question 2\nTrouvez l’expression analytique de l’isométrie qui envoie le triangle de la figure 1 sur celui de la figure 2.\n\n\n\nFigure 1\n\n\n\n\n\nFigure 2\n\n\n\nSolution. L’expression analytique d’une telle isométrie peut être exprimée de la façon suivante :\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-\\frac{\\sqrt{2}}{2}&\\frac{\\sqrt{2}}{2}\\\\\n-\\frac{\\sqrt{2}}{2}&-\\frac{\\sqrt{2}}{2}\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}1-\\frac{\\sqrt{2}}{4}\\\\\\frac{\\sqrt{2}}{4}\\end{array}\\right).\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-3",
     "href": "exercices/TransPlan/TransPlan.html#question-3",
     "title": "02 - Transformations du plan",
     "section": "Question 3",
-    "text": "Question 3\nTrouvez l’expression analytique d’une application affine qui envoie le triangle de sommets \\(A = (-11,3)\\), \\(B = (1,12)\\) et \\(C = (-1,14)\\) sur le triangle de sommets \\(P = (90,-68), Q = (69,-53)\\) et \\(R = (83,-59)\\). On sous-entend ici que le point \\(A\\) est envoyé sur \\(P\\), le point \\(B\\) sur \\(Q\\) et le point \\(C\\) sur \\(R\\). Il serait souhaitable d’utiliser un outil informatique pour faire les calculs.\n\nSolution. L’expression analytique de la transformation cherchée est :\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-4&3\\\\2&-1\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}37\\\\-43\\end{array}\\right).\n\\]\nImposition des conditions\nIl faut déterminer \\(a, b, c, d, e\\) et \\(f\\) tels que la transformation\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right)\n\\]\nsoit telle que \\(w(A) = P\\), \\(w(B) = Q\\) et \\(w(C) = R\\). Ces trois conditions se traduisent :\n\\[\nw\\left(\\begin{array}{c}-11\\\\3\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}-11\\\\3\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right) =\n\\left(\\begin{array}{c}90\\\\-68\\end{array}\\right),\n\\]\n\\[\nw\\left(\\begin{array}{c}1\\\\12\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}1\\\\12\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right) =\n\\left(\\begin{array}{c}69\\\\-53\\end{array}\\right),\n\\]\n\\[\nw\\left(\\begin{array}{c}-1\\\\14\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}-1\\\\14\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right) =\n\\left(\\begin{array}{c}83\\\\-59\\end{array}\\right),\n\\]\nqui, sous forme d’équations, s’écrivent :\n\\[\n\\begin{align}\n-11a + 3b + e &= 90, \\\\\n-11c + 3d + f &= -68, \\\\\na + 12b + e &= 69, \\\\\nc + 12d + f &= -53, \\\\\n-a + 14b + e &= 83, \\\\\n-c + 14d + f &= -59.\n\\end{align}\n\\]\nRésolution des systèmes\nOn considère d’abord le système formé des équations ne contenant que les nombres \\(a,b\\) et \\(e\\) :\n\\[\n\\begin{aligned}\n-11a + 3b + e &= 90,\\\\\na + 12b + e &= 69,\\\\\n-a + 14b + e &= 83.\n\\end{aligned}\n\\]\nPar la suite, on traite le système formé des équations ne contenant que les nombres \\(c,d\\) et \\(f\\) :\n\\[\n\\begin{align}\n-11c + 3d + f &= -68,\\\\\nc + 12d + f &= -53,\\\\\n-c + 14d + f &= -59.\n\\end{align}\n\\]\nLe premier système nous donne \\(a = -4\\), \\(b = 3\\) et \\(e = 37\\), et le second conduit à \\(c = 2\\), \\(d = -1\\) et \\(f = -43\\). Ainsi, la transformation cherchée est :\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-4 & 3 \\\\ 2 & -1\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}37\\\\-43\\end{array}\\right).\n\\]"
+    "text": "Question 3\nTrouvez l’expression analytique d’une application affine qui envoie le triangle de sommets \\(A = (-11,3),B = (1,12)\\) et \\(C = (-1,14)\\) sur le triangle de sommets \\(P = (90,-68), Q = (69,-53)\\) et \\(R = (83,-59).\\) On sous-entend ici que le point \\(A\\) est envoyé sur \\(P\\), le point \\(B\\) sur \\(Q\\) et le point \\(C\\) sur \\(R.\\) Il serait souhaitable d’utiliser un outil informatique pour faire les calculs.\n\nSolution. L’expression analytique de la transformation cherchée est :\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-4&3\\\\2&-1\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}37\\\\-43\\end{array}\\right).\n\\]\nImposition des conditions\nIl faut déterminer \\(a, b, c, d, e\\) et \\(f\\) tels que la transformation\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right)\n\\]\nsoit telle que \\(w(A) = P\\), \\(w(B) = Q\\) et \\(w(C) = R\\). Ces trois conditions se traduisent :\n\\[\nw\\left(\\begin{array}{c}-11\\\\3\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}-11\\\\3\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right) =\n\\left(\\begin{array}{c}90\\\\-68\\end{array}\\right),\n\\]\n\\[\nw\\left(\\begin{array}{c}1\\\\12\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}1\\\\12\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right) =\n\\left(\\begin{array}{c}69\\\\-53\\end{array}\\right),\n\\]\n\\[\nw\\left(\\begin{array}{c}-1\\\\14\\end{array}\\right) =\n\\left(\\begin{array}{cc}a & b \\\\ c & d\\end{array}\\right)\n\\left(\\begin{array}{c}-1\\\\14\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right) =\n\\left(\\begin{array}{c}83\\\\-59\\end{array}\\right),\n\\]\nqui, sous forme d’équations, s’écrivent :\n\\[\n\\begin{align}\n-11a + 3b + e &= 90, \\\\\n-11c + 3d + f &= -68, \\\\\na + 12b + e &= 69, \\\\\nc + 12d + f &= -53, \\\\\n-a + 14b + e &= 83, \\\\\n-c + 14d + f &= -59.\n\\end{align}\n\\]\nRésolution des systèmes\nOn considère d’abord le système formé des équations ne contenant que les nombres \\(a,b\\) et \\(e\\) :\n\\[\n\\begin{aligned}\n-11a + 3b + e &= 90,\\\\\na + 12b + e &= 69,\\\\\n-a + 14b + e &= 83.\n\\end{aligned}\n\\]\nPar la suite, on traite le système formé des équations ne contenant que les nombres \\(c,d\\) et \\(f\\) :\n\\[\n\\begin{align}\n-11c + 3d + f &= -68,\\\\\nc + 12d + f &= -53,\\\\\n-c + 14d + f &= -59.\n\\end{align}\n\\]\nLe premier système nous donne \\(a = -4\\), \\(b = 3\\) et \\(e = 37\\), et le second conduit à \\(c = 2\\), \\(d = -1\\) et \\(f = -43\\). Ainsi, la transformation cherchée est :\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-4 & 3 \\\\ 2 & -1\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}37\\\\-43\\end{array}\\right).\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-4",
     "href": "exercices/TransPlan/TransPlan.html#question-4",
     "title": "02 - Transformations du plan",
     "section": "Question 4",
-    "text": "Question 4\nTrouvez l’image du point de coordonnées \\((x,y)\\) par une homothétie de centre \\((h,k)\\) et de rapport \\(c\\). (Suggestion : translatez d’abord le point \\((x,y)\\) selon le vecteur \\((-h,-k)\\) avant d’effectuer l’homothétie, puis translatez le point obtenu selon le vecteur \\((h,k)\\).)\n\nSolution. C’est le point de coordonnées \\(\\left(cx+h(1-c), cy+k(1-c)\\right)\\)."
+    "text": "Question 4\nTrouvez l’image du point de coordonnées \\((x,y)\\) par une homothétie de centre \\((h,k)\\) et de rapport \\(c\\). (Suggestion : translatez d’abord le point \\((x,y)\\) selon le vecteur \\((-h,-k)\\) avant d’effectuer l’homothétie, puis translatez le point obtenu selon le vecteur \\((h,k)\\).)\n\nSolution. C’est le point de coordonnées \\(\\left(cx+h(1-c), cy+k(1-c)\\right)\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-5",
     "href": "exercices/TransPlan/TransPlan.html#question-5",
     "title": "02 - Transformations du plan",
     "section": "Question 5",
-    "text": "Question 5\nTrouvez deux similitudes qui envoient le segment \\(\\mathcal{S}\\), reliant les points \\(P = (-3,-1)\\) et \\(Q = (-1,1)\\), sur le segment \\(\\mathcal{T}\\), reliant les points \\(A = (3,1)\\) et \\(B = (2,2)\\). On sous-entend ici que le point \\(P\\) est envoyé sur \\(A\\), et le point \\(Q\\) sur \\(B\\).\n\nSolution. Les expressions analytiques des deux similitudes cherchées sont les suivantes :\n\\[\nw_1\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}0&-\\frac{1}{2}\\\\\\frac{1}{2}&0\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}\\frac{5}{2}\\\\\\frac{5}{2}\\end{array}\\right),\n\\]\n\\[\nw_2\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-\\frac{1}{2}&0\\\\0&\\frac{1}{2}\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}\\frac{3}{2}\\\\\\frac{3}{2}\\end{array}\\right).\n\\]"
+    "text": "Question 5\nTrouvez deux similitudes qui envoient le segment \\(\\mathcal{S}\\), reliant les points \\(P = (-3,-1)\\) et \\(Q = (-1,1)\\), sur le segment \\(\\mathcal{T}\\), reliant les points \\(A = (3,1)\\) et \\(B = (2,2)\\). On sous-entend ici que le point \\(P\\) est envoyé sur \\(A\\), et le point \\(Q\\) sur \\(B\\).\n\nSolution. Les expressions analytiques des deux similitudes cherchées sont les suivantes :\n\\[\nw_1\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}0&-\\frac{1}{2}\\\\\\frac{1}{2}&0\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}\\frac{5}{2}\\\\\\frac{5}{2}\\end{array}\\right),\n\\]\n\\[\nw_2\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}-\\frac{1}{2}&0\\\\0&\\frac{1}{2}\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}\\frac{3}{2}\\\\\\frac{3}{2}\\end{array}\\right).\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-6",
     "href": "exercices/TransPlan/TransPlan.html#question-6",
     "title": "02 - Transformations du plan",
     "section": "Question 6",
-    "text": "Question 6\nTrouvez l’expression analytique de la transformation affine correspondant à la projection orthogonale sur la droite d’équation \\(y = x\\).\n\nSolution. Si \\(w\\) désigne la projection orthogonale sur la droite d’équation \\(y = x\\), alors\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}\\frac{1}{2}&\\frac{1}{2}\\\\\\frac{1}{2}&\\frac{1}{2}\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right).\n\\]"
+    "text": "Question 6\nTrouvez l’expression analytique de la transformation affine correspondant à la projection orthogonale sur la droite d’équation \\(y = x\\).\n\nSolution. Si \\(w\\) désigne la projection orthogonale sur la droite d’équation \\(y = x\\), alors\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}\\frac{1}{2}&\\frac{1}{2}\\\\\\frac{1}{2}&\\frac{1}{2}\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right).\n\\]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-7",
     "href": "exercices/TransPlan/TransPlan.html#question-7",
     "title": "02 - Transformations du plan",
     "section": "Question 7",
-    "text": "Question 7\nSoient \\(a,b,r\\in]0,\\infty[\\), et \\(e,f\\in\\mathbb{R}\\). Considérons l’application affine \\(w:\\mathbb{R}^2\\to \\mathbb{R}^2\\) dont l’expression analytique est donnée par\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}a&0\\\\0&b\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right).\n\\]\nQuelle est l’équation du lieu des points de \\(\\mathbb{R}^2\\) correspondant à l’image du cercle d’équation \\(x^2 + y^2 = r^2\\) par \\(w\\) ?\n\nSolution. Il s’agit d’une ellipse d’équation\n\\[\n\\frac{(x-e)^2}{(ar)^2} + \\frac{(y-f)^2}{(br)^2} = 1,\n\\]\nc’est-à-dire une ellipse centrée au point \\((e,f)\\) dont l’axe horizontal est de longueur \\(2ar\\) et dont l’axe vertical est de longueur \\(2br\\)."
+    "text": "Question 7\nSoient \\(a,b,r\\in]0,\\infty[\\), et \\(e,f\\in\\mathbb{R}\\). Considérons l’application affine \\(w:\\mathbb{R}^2\\to \\mathbb{R}^2\\) dont l’expression analytique est donnée par\n\\[\nw\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) =\n\\left(\\begin{array}{cc}a&0\\\\0&b\\end{array}\\right)\n\\left(\\begin{array}{c}x\\\\y\\end{array}\\right) +\n\\left(\\begin{array}{c}e\\\\f\\end{array}\\right).\n\\]\nQuelle est l’équation du lieu des points de \\(\\mathbb{R}^2\\) correspondant à l’image du cercle d’équation \\(x^2 + y^2 = r^2\\) par \\(w\\) ?\n\nSolution. Il s’agit d’une ellipse d’équation\n\\[\n\\frac{(x-e)^2}{(ar)^2} + \\frac{(y-f)^2}{(br)^2} = 1,\n\\]\nc’est-à-dire une ellipse centrée au point \\((e,f)\\) dont l’axe horizontal est de longueur \\(2ar\\) et dont l’axe vertical est de longueur \\(2br\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
   },
   {
     "objectID": "exercices/TransPlan/TransPlan.html#question-8",
     "href": "exercices/TransPlan/TransPlan.html#question-8",
     "title": "02 - Transformations du plan",
     "section": "Question 8",
-    "text": "Question 8\nOn considère le triangle rectangle \\(\\mathcal{T}:=\\Delta BAC\\) illustré ci-dessous dont les côtés sont de longueur \\(a, b\\) et \\(c\\). Le triangle \\(\\mathcal{T}\\) est l’union des triangles rectangles \\(\\mathcal{T}_1:=\\Delta ADC\\) et \\(\\mathcal{T}_2:=\\Delta BDC\\).\n\n\n\nIllustration du triangle rectangle\n\n\n\nMontrez que \\(\\mathcal{T}_1\\) et \\(\\mathcal{T}_2\\) sont semblables à \\(\\mathcal{T}\\).\nD’après (a), il existe des similitudes \\(w_1\\) et \\(w_2\\) telles que \\(w_1(\\mathcal{T})=\\mathcal{T}_1\\) et \\(w_2(\\mathcal{T})=\\mathcal{T}_2\\). Soient \\(k_1\\) et \\(k_2\\), les rapports de similitude de \\(w_1\\) et \\(w_2\\) respectivement. Déterminez les valeurs de \\(k_1\\) et \\(k_2\\).\n\nSolution. On trouve que \\(k_1 = \\frac{a}{c}\\) et \\(k_2 = \\frac{b}{c}\\).\n\nMontrez que si \\(\\mathcal{A}\\) et \\(\\mathcal{B}\\) sont deux triangles semblables tels que \\(\\mathcal{B}=w(\\mathcal{A})\\), où \\(w\\) est une similitude de rapport \\(k\\), alors Aire(\\(\\mathcal{B}\\))=\\(k^2\\)Aire(\\(\\mathcal{A}\\)).\nDésignons par \\(s, s_1\\) et \\(s_2\\) les aires des triangles \\(\\mathcal{T}, \\mathcal{T}_1\\) et \\(\\mathcal{T}_2\\) respectivement. Utiliser ce qui précède, et l’égalité \\(s = s_1 + s_2\\) pour démontrer le théorème de Pythagore.\nTrouvez un ensemble \\(\\mathcal{E}\\) tel que \\(w_1(\\mathcal{E})\\cup w_2(\\mathcal{E})=\\mathcal{E}\\).\n\nSolution. On vérifie que \\(\\mathcal{E} = \\mathcal{T}\\) fait l’affaire."
+    "text": "Question 8\nOn considère le triangle rectangle \\(\\mathcal{T}:=\\Delta BAC\\) illustré ci-dessous dont les côtés sont de longueur \\(a, b\\) et \\(c\\). Le triangle \\(\\mathcal{T}\\) est l’union des triangles rectangles \\(\\mathcal{T}_1:=\\Delta ADC\\) et \\(\\mathcal{T}_2:=\\Delta BDC\\).\n\n\n\nIllustration du triangle rectangle\n\n\n\nMontrez que \\(\\mathcal{T}_1\\) et \\(\\mathcal{T}_2\\) sont semblables à \\(\\mathcal{T}\\).\nD’après (a), il existe des similitudes \\(w_1\\) et \\(w_2\\) telles que \\(w_1(\\mathcal{T})=\\mathcal{T}_1\\) et \\(w_2(\\mathcal{T})=\\mathcal{T}_2\\). Soient \\(k_1\\) et \\(k_2\\), les rapports de similitude de \\(w_1\\) et \\(w_2\\) respectivement. Déterminez les valeurs de \\(k_1\\) et \\(k_2\\).\n\nSolution. On trouve que \\(k_1 = \\frac{a}{c}\\) et \\(k_2 = \\frac{b}{c}\\).\n\nMontrez que si \\(\\mathcal{A}\\) et \\(\\mathcal{B}\\) sont deux triangles semblables tels que \\(\\mathcal{B}=w(\\mathcal{A})\\), où \\(w\\) est une similitude de rapport \\(k\\), alors Aire(\\(\\mathcal{B}\\))=\\(k^2\\)Aire(\\(\\mathcal{A}\\)).\nDésignons par \\(s, s_1\\) et \\(s_2\\) les aires des triangles \\(\\mathcal{T}, \\mathcal{T}_1\\) et \\(\\mathcal{T}_2\\) respectivement. Utiliser ce qui précède, et l’égalité \\(s = s_1 + s_2\\) pour démontrer le théorème de Pythagore.\nTrouvez un ensemble \\(\\mathcal{E}\\) tel que \\(w_1(\\mathcal{E})\\cup w_2(\\mathcal{E})=\\mathcal{E}\\).\n\nSolution. On vérifie que \\(\\mathcal{E} = \\mathcal{T}\\) fait l’affaire.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>02 - Transformations du plan</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/EspacesMet/EspacesMet.html",
+    "href": "exercices/EspacesMet/EspacesMet.html",
+    "title": "03 - Espaces métriques",
+    "section": "",
+    "text": "Question 1\nSoit \\(P(x_1,y_1)\\) et \\(Q(x_2,y_2)\\) des éléments de \\(\\mathbb{R}^2\\). Déterminez si les fonctions suivantes sont des métriques sur \\(\\mathbb{R}^2\\). Dans chacun des cas, justifiez votre réponse.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-1",
     "href": "exercices/EspacesMet/EspacesMet.html#question-1",
     "title": "03 - Espaces métriques",
-    "section": "Question 1",
-    "text": "Question 1\nSoit \\(P(x_1,y_1)\\) et \\(Q(x_2,y_2)\\) des éléments de \\(\\mathbb{R}^2\\). Déterminez si les fonctions suivantes sont des métriques sur \\(\\mathbb{R}^2\\). Dans chacun des cas, justifiez votre réponse.\n\n\\(d(P,Q) = |x_1-x_2| + |y_1-y_2|\\)\n\nSolution. Oui, c’est la distance euclidienne.\n\n\\(d(P,Q) = |x_1-x_2| \\cdot |y_1-y_2|\\)\n\nSolution. Non, par exemple \\(d((1,0),(1,1))=0\\) alors que les points \\((1,0)\\) et \\((1,1)\\) sont distincts. Cela contredit la propriété d’une métrique voulant que \\(d(P,Q)=0\\Rightarrow P=Q\\).\n\n\\(d(P,Q) = |x_1+x_2| + |y_1+y_2|\\)\n\nSolution. Non, par exemple \\(d((1,0),(-1,0))=0\\) alors que les points \\((1,0)\\) et \\((-1,0)\\) sont distincts. Cela contredit la propriété d’une métrique voulant que \\(d(P,Q)=0\\Rightarrow P=Q\\)."
+    "section": "",
+    "text": "\\(d(P,Q) = |x_1-x_2| + |y_1-y_2|\\)\n\nSolution. Oui, c’est la distance euclidienne.\n\n\\(d(P,Q) = |x_1-x_2| \\cdot |y_1-y_2|\\)\n\nSolution. Non, par exemple \\(d((1,0),(1,1))=0\\) alors que les points \\((1,0)\\) et \\((1,1)\\) sont distincts. Cela contredit la propriété d’une métrique voulant que \\(d(P,Q)=0\\Rightarrow P=Q\\).\n\n\\(d(P,Q) = |x_1+x_2| + |y_1+y_2|\\)\n\nSolution. Non, par exemple \\(d((1,0),(-1,0))=0\\) alors que les points \\((1,0)\\) et \\((-1,0)\\) sont distincts. Cela contredit la propriété d’une métrique voulant que \\(d(P,Q)=0\\Rightarrow P=Q\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-2",
     "href": "exercices/EspacesMet/EspacesMet.html#question-2",
     "title": "03 - Espaces métriques",
     "section": "Question 2",
-    "text": "Question 2\nSoit l’espace métrique \\(\\left(\\mathbb{R}^2,d\\right)\\), où \\(d\\) est la métrique définie par \\[\nd\\left((x_1,y_1),(x_2,y_2)\\right) = |x_1-x_2| + 2|y_1-y_2|.\n\\] Dessinez la boule ouverte centrée à l’origine de rayon \\(r\\).\n\nSolution. L’intérieur du losange de sommets \\(\\left(0,\\frac{1}{2}\\right), \\left(1,0\\right), \\left(0,-\\frac{1}{2}\\right), \\left(-1,0\\right)\\)."
+    "text": "Question 2\nSoit l’espace métrique \\(\\left(\\mathbb{R}^2,d\\right)\\), où \\(d\\) est la métrique définie par \\[\nd\\left((x_1,y_1),(x_2,y_2)\\right) = |x_1-x_2| + 2|y_1-y_2|.\n\\] Dessinez la boule ouverte centrée à l’origine de rayon \\(r\\).\n\nSolution. L’intérieur du losange de sommets \\(\\left(0,\\frac{1}{2}\\right), \\left(1,0\\right), \\left(0,-\\frac{1}{2}\\right), \\left(-1,0\\right)\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-3",
     "href": "exercices/EspacesMet/EspacesMet.html#question-3",
     "title": "03 - Espaces métriques",
     "section": "Question 3",
-    "text": "Question 3\nEst-ce que l’espace métrique \\(\\left(\\mathbb{R} \\setminus \\mathbb{Q}, d_E\\right)\\) est complet? Justifiez.\n\nSolution. Non. Il suffit de considérer une suite de nombres irrationnels qui converge vers un nombre rationnels. Par exemple, la suite \\((x_n)\\) où \\(x_n=\\frac{\\sqrt{2}}{n}\\) est une suite de Cauchy dans \\(\\mathbb{R} \\setminus \\mathbb{Q}\\) qui converge vers \\(0\\), un nombre qui n’est pas dans cet ensemble."
+    "text": "Question 3\nEst-ce que l’espace métrique \\(\\left(\\mathbb{R} \\setminus \\mathbb{Q}, d_E\\right)\\) est complet? Justifiez.\n\nSolution. Non. Il suffit de considérer une suite de nombres irrationnels qui converge vers un nombre rationnels. Par exemple, la suite \\((x_n)\\) où \\(x_n=\\frac{\\sqrt{2}}{n}\\) est une suite de Cauchy dans \\(\\mathbb{R} \\setminus \\mathbb{Q}\\) qui converge vers \\(0\\), un nombre qui n’est pas dans cet ensemble.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-4",
     "href": "exercices/EspacesMet/EspacesMet.html#question-4",
     "title": "03 - Espaces métriques",
     "section": "Question 4",
-    "text": "Question 4\nDonnez le terme général d’une suite \\((x_n)\\) de nombres rationnels qui converge vers \\(\\sqrt{2}\\), faisant de \\(\\left(\\mathbb{Q}, d_E\\right)\\) un espace métrique qui n’est pas complet.\n\nSolution. Plusieurs réponses possibles, le graphe de la fonction \\(f(x)=x^2-2\\) et la construction de tangentes bien choisies peut vous suggérer une méthode."
+    "text": "Question 4\nDonnez le terme général d’une suite \\((x_n)\\) de nombres rationnels qui converge vers \\(\\sqrt{2}\\), faisant de \\(\\left(\\mathbb{Q}, d_E\\right)\\) un espace métrique qui n’est pas complet.\n\nSolution. Plusieurs réponses possibles, le graphe de la fonction \\(f(x)=x^2-2\\) et la construction de tangentes bien choisies peut vous suggérer une méthode.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-5",
     "href": "exercices/EspacesMet/EspacesMet.html#question-5",
     "title": "03 - Espaces métriques",
     "section": "Question 5",
-    "text": "Question 5\nVrai ou faux avec justification. Soit \\((x_n)\\) une suite dans un espace métrique \\(\\left(E,d\\right)\\). Si \\[\nd(x_n,a) &lt; \\frac{1}{n} \\text{ pour tout } n \\geq 1000,\n\\] alors \\(a \\in E\\).\n\nSolution. Faux, la suite considérée à la question 3 fourni un contre-exemple."
+    "text": "Question 5\nVrai ou faux avec justification. Soit \\((x_n)\\) une suite dans un espace métrique \\(\\left(E,d\\right)\\). Si \\[\nd(x_n,a) &lt; \\frac{1}{n} \\text{ pour tout } n \\geq 1000,\n\\] alors \\(a \\in E\\).\n\nSolution. Faux, la suite considérée à la question 3 fourni un contre-exemple.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-6",
     "href": "exercices/EspacesMet/EspacesMet.html#question-6",
     "title": "03 - Espaces métriques",
     "section": "Question 6",
-    "text": "Question 6\nPour chacun des ensembles ci-dessous, considérés dans l’espace métrique \\(\\left(\\mathbb{R}^2, d_E\\right)\\), déterminez lesquelles des caractéristiques suivantes sont possédées par l’ensemble : Fermé, Ouvert, Borné, Compact. Donnez aussi une représentation graphique de l’ensemble.\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : -1 &lt; x &lt; 1 ~\\text{et}~ 0 \\leq y \\leq 1\\right\\}\\)\n\nSolution. Borné\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Dessiner la région remplie entre x = -1 et x = 1, y entre 0 et 1\nx_fill = np.linspace(-1, 1, 1000)  # Points pour remplir le rectangle\ny_bottom = np.zeros_like(x_fill)   # Bas de la région y = 0\ny_top = np.ones_like(x_fill)       # Haut de la région y = 1\n\nax.fill_between(x_fill, y_bottom, y_top, where=(x_fill &gt; -1) & (x_fill &lt; 1),\ncolor='skyblue', alpha=0.5, label='-1 &lt; x &lt; 1, 0 ≤ y ≤ 1')\n\n# Tracer les segments horizontaux (inclus dans l'ensemble)\nax.hlines(y=0, xmin=-1, xmax=1, color='blue', linestyle='-', linewidth=2)\nax.hlines(y=1, xmin=-1, xmax=1, color='blue', linestyle='-', linewidth=2)\n\n# Tracer les lignes verticales pointillées aux limites x = -1 et x = 1 dans y ∈ [0, 1]\ny_vertical = np.linspace(0, 1, 100)  # y de 0 à 1\nax.plot([-1] * len(y_vertical), y_vertical, 'b--', linewidth=2)  # x = -1\nax.plot([1] * len(y_vertical), y_vertical, 'b--', linewidth=2)   # x = 1\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.5, 1.5)\nax.set_ylim(-0.5, 1.5)\nax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-0.5, 1.6, 0.5))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Ensemble : $-1 &lt; x &lt; 1$ et $0 \\leq y \\leq 1$\", fontsize=14)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : y = x^2\\right\\}\\)\n\nSolution. Fermé\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Définir les données pour la parabole y = x^2\nx = np.linspace(-3, 3, 1000)  # Points entre -3 et 3\ny = x**2  # Parabole\n\n# Tracer la parabole\nax.plot(x, y, color='blue', linewidth=2)\n\n# Ajouter les axes x et y qui s'intersectent en (0, 0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-3.5, 3.5)\nax.set_ylim(-0.5, 10)\nax.set_xticks(np.arange(-3, 4, 1))  # Graduations sur x\nax.set_yticks(np.arange(0, 11, 2))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Parabole $y = x^2$\", fontsize=14)\n\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : |x| = |y| ~\\text{et}~ -1 \\leq x \\leq 1\\right\\}\\)\n\nSolution. Borné, fermé et compact\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\nx = np.linspace(-1, 1, 1000)  # Points entre -3 et 3\ny = x\n\n# Tracer la parabole\nax.plot(x, y, color='blue', linewidth=2)\ny=-x\nax.plot(x, y, color='blue', linewidth=2)\n\n# Ajouter les axes x et y qui s'intersectent en (0, 0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.5, 1.5)\nax.set_ylim(-1.5, 1.5)\nax.set_xticks(np.arange(-1, 1, 1))  # Graduations sur x\nax.set_yticks(np.arange(-1, 1, 1))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : 0 &lt; y &lt; 1\\right\\}\\)\n\nSolution. Ouvert\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Dessiner la région remplie entre x = -1 et x = 1, y entre 0 et 1\nx_fill = np.linspace(-2, 2, 1000)  # Points pour remplir le rectangle\ny_bottom = np.zeros_like(x_fill)   # Bas de la région y = 0\ny_top = np.ones_like(x_fill)       # Haut de la région y = 1\n\nax.fill_between(x_fill, y_bottom, y_top, where=(x_fill &gt; -2) & (x_fill &lt; 2),\ncolor='skyblue', alpha=0.5, label='0 &lt; y &lt; 1')\n\n# Tracer les segments horizontaux (inclus dans l'ensemble)\nax.hlines(y=0, xmin=-2, xmax=2, color='blue', linestyle='--', linewidth=2)\nax.hlines(y=1, xmin=-2, xmax=2, color='blue', linestyle='--', linewidth=2)\n\n# Tracer les lignes verticales pointillées aux limites x = -1 et x = 1 dans y ∈ [0, 1]\n #  y_vertical = np.linspace(0, 1, 100)  # y de 0 à 1\n #  ax.plot([-1] * len(y_vertical), y_vertical, 'b--', linewidth=2)  # x = -1\n #  ax.plot([1] * len(y_vertical), y_vertical, 'b--', linewidth=2)# x = 1\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-2, 2)\nax.set_ylim(-0.5, 1.5)\nax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-0.5, 1.6, 0.5))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : |x|+|y| &lt; 1\\right\\}\\)\n\nSolution. Ouvert et borné\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Générer les points pour tracer la frontière |x| + |y| = 1\nx = np.linspace(-1, 1, 500)  # Intervalle pour x\ny1 = 1 - np.abs(x)           # y positif pour la frontière\ny2 = -(1 - np.abs(x))        # y négatif pour la frontière\n\n# Tracer la région remplie à l'intérieur de la frontière\nx_fill = np.linspace(-1, 1, 500)\nfor x_i in x_fill:\n   ax.fill_between([x_i], -(1 - abs(x_i)), 1 - abs(x_i), color='skyblue', alpha=0.5)\n\n# Tracer la frontière en pointillés (|x| + |y| = 1)\nax.plot(x, y1, 'b--', linewidth=2)  # Partie supérieure\nax.plot(x, y2, 'b--', linewidth=2)  # Partie inférieure\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.2, 1.2)\nax.set_ylim(-1.2, 1.2)\nax.set_xticks(np.arange(-1, 1.1, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-1, 1.1, 0.5))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Région : $|x| + |y| &lt; 1$\", fontsize=14)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : x^2 + y^2 = 1\\right\\}\\)\n\nSolution. Borné, fermé et compact\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Paramètres pour tracer le cercle x^2 + y^2 = 1\ntheta = np.linspace(0, 2 * np.pi, 1000)  # Paramètre pour la circonférence\nx = np.cos(theta)  # Coordonnées x sur le cercle\ny = np.sin(theta)  # Coordonnées y sur le cercle\n\n# Tracer la frontière du cercle en pointillés\nax.plot(x, y, linestyle='-', color='blue', linewidth=2, label=r'$x^2 + y^2 = 1$')\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.5, 1.5)\nax.set_ylim(-1.5, 1.5)\nax.set_aspect('equal')  # Assure un repère orthonormé\nax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur y\n\n# Étiquettes des axes et titre\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Frontière : $x^2 + y^2 = 1$\", fontsize=14)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()"
+    "text": "Question 6\nPour chacun des ensembles ci-dessous, considérés dans l’espace métrique \\(\\left(\\mathbb{R}^2, d_E\\right)\\), déterminez lesquelles des caractéristiques suivantes sont possédées par l’ensemble : Fermé, Ouvert, Borné, Compact. Donnez aussi une représentation graphique de l’ensemble.\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : -1 &lt; x &lt; 1 ~\\text{et}~ 0 \\leq y \\leq 1\\right\\}\\)\n\nSolution. Borné\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Dessiner la région remplie entre x = -1 et x = 1, y entre 0 et 1\nx_fill = np.linspace(-1, 1, 1000)  # Points pour remplir le rectangle\ny_bottom = np.zeros_like(x_fill)   # Bas de la région y = 0\ny_top = np.ones_like(x_fill)       # Haut de la région y = 1\n\nax.fill_between(x_fill, y_bottom, y_top, where=(x_fill &gt; -1) & (x_fill &lt; 1),\ncolor='skyblue', alpha=0.5, label='-1 &lt; x &lt; 1, 0 ≤ y ≤ 1')\n\n# Tracer les segments horizontaux (inclus dans l'ensemble)\nax.hlines(y=0, xmin=-1, xmax=1, color='blue', linestyle='-', linewidth=2)\nax.hlines(y=1, xmin=-1, xmax=1, color='blue', linestyle='-', linewidth=2)\n\n# Tracer les lignes verticales pointillées aux limites x = -1 et x = 1 dans y ∈ [0, 1]\ny_vertical = np.linspace(0, 1, 100)  # y de 0 à 1\nax.plot([-1] * len(y_vertical), y_vertical, 'b--', linewidth=2)  # x = -1\nax.plot([1] * len(y_vertical), y_vertical, 'b--', linewidth=2)   # x = 1\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.5, 1.5)\nax.set_ylim(-0.5, 1.5)\nax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-0.5, 1.6, 0.5))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Ensemble : $-1 &lt; x &lt; 1$ et $0 \\leq y \\leq 1$\", fontsize=14)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : y = x^2\\right\\}\\)\n\nSolution. Fermé\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Définir les données pour la parabole y = x^2\nx = np.linspace(-3, 3, 1000)  # Points entre -3 et 3\ny = x**2  # Parabole\n\n# Tracer la parabole\nax.plot(x, y, color='blue', linewidth=2)\n\n# Ajouter les axes x et y qui s'intersectent en (0, 0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-3.5, 3.5)\nax.set_ylim(-0.5, 10)\nax.set_xticks(np.arange(-3, 4, 1))  # Graduations sur x\nax.set_yticks(np.arange(0, 11, 2))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Parabole $y = x^2$\", fontsize=14)\n\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : |x| = |y| ~\\text{et}~ -1 \\leq x \\leq 1\\right\\}\\)\n\nSolution. Borné, fermé et compact\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\nx = np.linspace(-1, 1, 1000)  # Points entre -3 et 3\ny = x\n\n# Tracer la parabole\nax.plot(x, y, color='blue', linewidth=2)\ny=-x\nax.plot(x, y, color='blue', linewidth=2)\n\n# Ajouter les axes x et y qui s'intersectent en (0, 0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.5, 1.5)\nax.set_ylim(-1.5, 1.5)\nax.set_xticks(np.arange(-1, 1, 1))  # Graduations sur x\nax.set_yticks(np.arange(-1, 1, 1))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : 0 &lt; y &lt; 1\\right\\}\\)\n\nSolution. Ouvert\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Dessiner la région remplie entre x = -1 et x = 1, y entre 0 et 1\nx_fill = np.linspace(-2, 2, 1000)  # Points pour remplir le rectangle\ny_bottom = np.zeros_like(x_fill)   # Bas de la région y = 0\ny_top = np.ones_like(x_fill)       # Haut de la région y = 1\n\nax.fill_between(x_fill, y_bottom, y_top, where=(x_fill &gt; -2) & (x_fill &lt; 2),\ncolor='skyblue', alpha=0.5, label='0 &lt; y &lt; 1')\n\n# Tracer les segments horizontaux (inclus dans l'ensemble)\nax.hlines(y=0, xmin=-2, xmax=2, color='blue', linestyle='--', linewidth=2)\nax.hlines(y=1, xmin=-2, xmax=2, color='blue', linestyle='--', linewidth=2)\n\n# Tracer les lignes verticales pointillées aux limites x = -1 et x = 1 dans y ∈ [0, 1]\n #  y_vertical = np.linspace(0, 1, 100)  # y de 0 à 1\n #  ax.plot([-1] * len(y_vertical), y_vertical, 'b--', linewidth=2)  # x = -1\n #  ax.plot([1] * len(y_vertical), y_vertical, 'b--', linewidth=2)# x = 1\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-2, 2)\nax.set_ylim(-0.5, 1.5)\nax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-0.5, 1.6, 0.5))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : |x|+|y| &lt; 1\\right\\}\\)\n\nSolution. Ouvert et borné\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Générer les points pour tracer la frontière |x| + |y| = 1\nx = np.linspace(-1, 1, 500)  # Intervalle pour x\ny1 = 1 - np.abs(x)           # y positif pour la frontière\ny2 = -(1 - np.abs(x))        # y négatif pour la frontière\n\n# Tracer la région remplie à l'intérieur de la frontière\nx_fill = np.linspace(-1, 1, 500)\nfor x_i in x_fill:\n   ax.fill_between([x_i], -(1 - abs(x_i)), 1 - abs(x_i), color='skyblue', alpha=0.5)\n\n# Tracer la frontière en pointillés (|x| + |y| = 1)\nax.plot(x, y1, 'b--', linewidth=2)  # Partie supérieure\nax.plot(x, y2, 'b--', linewidth=2)  # Partie inférieure\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.2, 1.2)\nax.set_ylim(-1.2, 1.2)\nax.set_xticks(np.arange(-1, 1.1, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-1, 1.1, 0.5))  # Graduations sur y\n\n# Étiquettes des axes\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Région : $|x| + |y| &lt; 1$\", fontsize=14)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\\(\\left\\{(x,y)\\in\\mathbb{R}^2 : x^2 + y^2 = 1\\right\\}\\)\n\nSolution. Borné, fermé et compact\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Création de la figure et des axes\nfig, ax = plt.subplots(figsize=(6, 6))\n\n# Paramètres pour tracer le cercle x^2 + y^2 = 1\ntheta = np.linspace(0, 2 * np.pi, 1000)  # Paramètre pour la circonférence\nx = np.cos(theta)  # Coordonnées x sur le cercle\ny = np.sin(theta)  # Coordonnées y sur le cercle\n\n# Tracer la frontière du cercle en pointillés\nax.plot(x, y, linestyle='-', color='blue', linewidth=2, label=r'$x^2 + y^2 = 1$')\n\n# Ajouter les axes x et y qui s'intersectent en (0,0)\nax.axhline(0, color='black', linewidth=1)  # Axe des x\nax.axvline(0, color='black', linewidth=1)  # Axe des y\n\n# Configuration des limites et des graduations\nax.set_xlim(-1.5, 1.5)\nax.set_ylim(-1.5, 1.5)\nax.set_aspect('equal')  # Assure un repère orthonormé\nax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x\nax.set_yticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur y\n\n# Étiquettes des axes et titre\nax.set_xlabel('$x$', fontsize=12)\nax.set_ylabel('$y$', fontsize=12)\nax.set_title(r\"Frontière : $x^2 + y^2 = 1$\", fontsize=14)\n\n# Affichage de la grille pour une meilleure lisibilité\nax.grid(True, linestyle='--', alpha=0.5)\n\n# Affichage du graphique\nplt.show()",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-7",
     "href": "exercices/EspacesMet/EspacesMet.html#question-7",
     "title": "03 - Espaces métriques",
     "section": "Question 7",
-    "text": "Question 7\nSoit \\((E,d)\\) un espace métrique et soit \\(f:E\\rightarrow E\\), une contration. Montrez que \\(f\\) est continue. Rappelons qu’un fonction \\(f\\) est continue en \\(x_0\\) si pour tout \\(\\varepsilon&gt;0\\), il existe \\(\\delta&gt;0\\) tel que [xEd(x_0,x)&lt;d(f(x_0),f(x))&lt;.]"
+    "text": "Question 7\nSoit \\((E,d)\\) un espace métrique et soit \\(f:E\\rightarrow E\\), une contration. Montrez que \\(f\\) est continue. Rappelons qu’un fonction \\(f\\) est continue en \\(x_0\\) si pour tout \\(\\varepsilon&gt;0\\), il existe \\(\\delta&gt;0\\) tel que [xEd(x_0,x)&lt;d(f(x_0),f(x))&lt;.]",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
   },
   {
     "objectID": "exercices/EspacesMet/EspacesMet.html#question-8",
     "href": "exercices/EspacesMet/EspacesMet.html#question-8",
     "title": "03 - Espaces métriques",
     "section": "Question 8",
-    "text": "Question 8\nAssurez-vous de pouvoir définir sans aide chacun des objets mathématiques ci-dessous. Vérifiez vos réponses dans les notes de cours.\n\nUne contraction sur \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUn sous-ensemble borné de \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUn sous-ensemble fermé de \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUn sous-ensemble compact de \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUne métrique sur un ensemble \\(X\\).\nUn espace métrique.\nUne suite de Cauchy dans un espace métrique \\((X,d)\\).\nUn espace métrique complet."
+    "text": "Question 8\nAssurez-vous de pouvoir définir sans aide chacun des objets mathématiques ci-dessous. Vérifiez vos réponses dans les notes de cours.\n\nUne contraction sur \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUn sous-ensemble borné de \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUn sous-ensemble fermé de \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUn sous-ensemble compact de \\(\\left(\\mathbb{R}^2,d_E\\right)\\).\nUne métrique sur un ensemble \\(X\\).\nUn espace métrique.\nUne suite de Cauchy dans un espace métrique \\((X,d)\\).\nUn espace métrique complet.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>03 - Espaces métriques</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/PtFixes/PtFixes.html",
+    "href": "exercices/PtFixes/PtFixes.html",
+    "title": "04 - Les points fixes",
+    "section": "",
+    "text": "Question 1\nTrouvez les points fixes des fonctions ci-dessous.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>04 - Les points fixes</span>"
+    ]
   },
   {
     "objectID": "exercices/PtFixes/PtFixes.html#question-1",
     "href": "exercices/PtFixes/PtFixes.html#question-1",
     "title": "04 - Les points fixes",
-    "section": "Question 1",
-    "text": "Question 1\nTrouvez les points fixes des fonctions ci-dessous.\n\n\\(f(x) = x^3\\)\n\\(f(x, y) = (2x + y, x - y)\\)\nLa fonction de \\(\\mathbb{R}^2\\) vers \\(\\mathbb{R}^2\\) définie par \\(R_a \\circ R_b\\), où \\(a\\) est la droite \\(y = x\\) et \\(b\\) la droite \\(y = 3 - x\\).\nLa fonction \\(\\lfloor x \\rfloor\\)."
+    "section": "",
+    "text": "\\(f(x) = x^3\\)\n\\(f(x, y) = (2x + y, x - y)\\)\nLa fonction de \\(\\mathbb{R}^2\\) vers \\(\\mathbb{R}^2\\) définie par \\(R_a \\circ R_b\\), où \\(a\\) est la droite \\(y = x\\) et \\(b\\) la droite \\(y = 3 - x\\).\nLa fonction \\(\\lfloor x \\rfloor\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>04 - Les points fixes</span>"
+    ]
   },
   {
     "objectID": "exercices/PtFixes/PtFixes.html#question-2",
     "href": "exercices/PtFixes/PtFixes.html#question-2",
     "title": "04 - Les points fixes",
     "section": "Question 2",
-    "text": "Question 2\n\nUn seul polynôme possède une infinité de points fixes. Lequel ?\nExpliquez pourquoi un polynôme de degré \\(n \\geq 2\\) possède au plus \\(n\\) points fixes.\nPour chaque \\(n \\in \\mathbb{N}^{\\star}\\), trouvez un polynôme de degré \\(n\\) qui possède \\(n\\) points fixes."
+    "text": "Question 2\n\nUn seul polynôme possède une infinité de points fixes. Lequel ?\nExpliquez pourquoi un polynôme de degré \\(n \\geq 2\\) possède au plus \\(n\\) points fixes.\nPour chaque \\(n \\in \\mathbb{N}^{\\star}\\), trouvez un polynôme de degré \\(n\\) qui possède \\(n\\) points fixes.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>04 - Les points fixes</span>"
+    ]
   },
   {
     "objectID": "exercices/PtFixes/PtFixes.html#question-3",
     "href": "exercices/PtFixes/PtFixes.html#question-3",
     "title": "04 - Les points fixes",
     "section": "Question 3",
-    "text": "Question 3\nVrai ou faux avec justification : si \\(1\\) est une valeur propre de la matrice \\(A\\), alors la fonction de \\(\\mathbb{R}^2\\) dans \\(\\mathbb{R}^2\\) définie par \\(f(\\vec{x}) = A\\vec{x}\\) possède au moins un point fixe."
+    "text": "Question 3\nVrai ou faux avec justification : si \\(1\\) est une valeur propre de la matrice \\(A\\), alors la fonction de \\(\\mathbb{R}^2\\) dans \\(\\mathbb{R}^2\\) définie par \\(f(\\vec{x}) = A\\vec{x}\\) possède au moins un point fixe.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>04 - Les points fixes</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/SIF/SIF.html",
+    "href": "exercices/SIF/SIF.html",
+    "title": "05 - Les SIF",
+    "section": "",
+    "text": "Question 1\nPour chacune des paires d’ensembles ci-dessous, trouvez \\(d_H(A,B)\\), où \\(d_H\\) est la distance de Hausdorff.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/SIF/SIF.html#question-1",
     "href": "exercices/SIF/SIF.html#question-1",
     "title": "05 - Les SIF",
-    "section": "Question 1",
-    "text": "Question 1\nPour chacune des paires d’ensembles ci-dessous, trouvez \\(d_H(A,B)\\), où \\(d_H\\) est la distance de Hausdorff.\n\n\\(A = \\{(x_1,y_1)\\}\\) et \\(B = \\{(x_2,y_2)\\}\\).\n\n\nSolution. \\(\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)\n\n\n\\(A = \\{(1,1)\\}\\) et \\(B = \\{(x,y) : x^2 + y^2 \\leq r^2\\}\\).\n\n\nSolution. \\(r + \\sqrt{2}\\)\n\n\n\\(A = \\{(x,0) : -1 \\leq x \\leq 1\\}\\) et \\(B = \\{(0,y) : -2 \\leq y \\leq 2\\}\\).\n\n\nSolution. \\(2\\)\n\n\n\\(A = \\{(x,y) : (x - h_1)^2 + (y - k_1)^2 \\leq r_1^2\\}\\) et \\(B = \\{(x,y) : (x - h_2)^2 + (y - k_2)^2 \\leq r_2^2\\}\\).\n\n\nSolution. \\(\\sqrt{(h_2 - h_1)^2 + (k_2 - k_1)^2} + |r_2 - r_1|\\)"
+    "section": "",
+    "text": "\\(A = \\{(x_1,y_1)\\}\\) et \\(B = \\{(x_2,y_2)\\}\\).\n\n\nSolution. \\(\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)\n\n\n\\(A = \\{(1,1)\\}\\) et \\(B = \\{(x,y) : x^2 + y^2 \\leq r^2\\}\\).\n\n\nSolution. \\(r + \\sqrt{2}\\)\n\n\n\\(A = \\{(x,0) : -1 \\leq x \\leq 1\\}\\) et \\(B = \\{(0,y) : -2 \\leq y \\leq 2\\}\\).\n\n\nSolution. \\(2\\)\n\n\n\\(A = \\{(x,y) : (x - h_1)^2 + (y - k_1)^2 \\leq r_1^2\\}\\) et \\(B = \\{(x,y) : (x - h_2)^2 + (y - k_2)^2 \\leq r_2^2\\}\\).\n\n\nSolution. \\(\\sqrt{(h_2 - h_1)^2 + (k_2 - k_1)^2} + |r_2 - r_1|\\)",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/SIF/SIF.html#question-2",
     "href": "exercices/SIF/SIF.html#question-2",
     "title": "05 - Les SIF",
     "section": "Question 2",
-    "text": "Question 2\nUn SIF est formé de deux similitudes de rapport \\(\\frac{1}{2}\\), et de trois similitudes de rapport \\(\\frac{1}{4}\\).\n\nQuel est le rapport de contraction du SIF ?\n\n\nSolution. \\(\\frac{1}{2}\\)\n\n\nQuelle est la dimension de similitude généralisée de l’attracteur du SIF ?\n\n\nSolution. \\(\\frac{\\ln 3}{\\ln 2}\\)\n\n\nSi le SIF avait plutôt été formé de deux contractions de rapport \\(\\frac{1}{2}\\), et de trois contractions de rapport \\(\\frac{1}{3}\\), quelle aurait été la dimension de similitude généralisée de son attracteur ?\n\n\nSolution. On ne peut trouver la valeur exacte. Une valeur approchée serait \\(d \\approx 1{,}788\\)."
+    "text": "Question 2\nUn SIF est formé de deux similitudes de rapport \\(\\frac{1}{2}\\), et de trois similitudes de rapport \\(\\frac{1}{4}\\).\n\nQuel est le rapport de contraction du SIF ?\n\n\nSolution. \\(\\frac{1}{2}\\)\n\n\nQuelle est la dimension de similitude généralisée de l’attracteur du SIF ?\n\n\nSolution. \\(\\frac{\\ln 3}{\\ln 2}\\)\n\n\nSi le SIF avait plutôt été formé de deux contractions de rapport \\(\\frac{1}{2}\\), et de trois contractions de rapport \\(\\frac{1}{3}\\), quelle aurait été la dimension de similitude généralisée de son attracteur ?\n\n\nSolution. On ne peut trouver la valeur exacte. Une valeur approchée serait \\(d \\approx 1{,}788\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/SIF/SIF.html#ques-fractals",
     "href": "exercices/SIF/SIF.html#ques-fractals",
     "title": "05 - Les SIF",
     "section": "Question 3",
-    "text": "Question 3\nPour chacun des ensembles \\(E\\) autosimilaires ci-dessous :\n\nTrouvez les transformations \\(w_i\\) telles que \\(E\\) est l’attracteur du SIF \\(\\{w_i\\}_{i \\in J}\\), où \\(J = \\{1,2,\\ldots,n\\}\\) pour un certain \\(n \\in \\mathbb{N}\\);\nUtilisez un ordinateur pour construire une image qui ressemble à \\(E\\);\nTrouvez, si elle existe, la dimension de similitude de \\(E\\);\nTrouvez, si elle existe, la dimension de similitude généralisée de \\(E\\)."
+    "text": "Question 3\nPour chacun des ensembles \\(E\\) autosimilaires ci-dessous :\n\nTrouvez les transformations \\(w_i\\) telles que \\(E\\) est l’attracteur du SIF \\(\\{w_i\\}_{i \\in J}\\), où \\(J = \\{1,2,\\ldots,n\\}\\) pour un certain \\(n \\in \\mathbb{N}\\);\nUtilisez un ordinateur pour construire une image qui ressemble à \\(E\\);\nTrouvez, si elle existe, la dimension de similitude de \\(E\\);\nTrouvez, si elle existe, la dimension de similitude généralisée de \\(E\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/SIF/SIF.html#question-4",
     "href": "exercices/SIF/SIF.html#question-4",
     "title": "05 - Les SIF",
     "section": "Question 4",
-    "text": "Question 4\nSoit \\(\\mathcal{S}\\) le SIF dont l’attracteur est représenté ci-dessous.\n\n\n\nFractale\n\n\n\nTrouvez 3 fonctions \\(f_1, f_2\\) et \\(f_3\\) telles que \\(\\mathcal{S} = \\{f_1,f_2,f_3\\}\\).\n\n\nSolution. On trouve que \\[\nf_1\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} \\frac{1}{2} & 0 \\\\ 0 & \\frac{1}{2} \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix}, \\quad\nf_2\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} \\frac{1}{2} & 0 \\\\ 0 & \\frac{1}{2} \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} 8 \\\\ 0 \\end{pmatrix}.\n\\] Pour \\(f_3\\), c’est la composée d’une rotation \\(r\\), d’une contraction \\(c\\) et d’une translation \\(t\\). Ainsi, \\[\nf_3\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 & -\\frac{4}{5} \\\\ \\frac{5}{16} & 0 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} 16 \\\\ 5 \\end{pmatrix}.\n\\]\n\n\nQuelle est la dimension de similitude généralisée de \\(A\\)?\n\n\nSolution. Dans cette situation, nous ne sommes pas en mesure de déterminer la dimension de similitude de cet ensemble, ni même la dimension de similitude généralisée. En effet, l’une des transformations n’est pas une similitude."
+    "text": "Question 4\nSoit \\(\\mathcal{S}\\) le SIF dont l’attracteur est représenté ci-dessous.\n\n\n\nFractale\n\n\n\nTrouvez 3 fonctions \\(f_1, f_2\\) et \\(f_3\\) telles que \\(\\mathcal{S} = \\{f_1,f_2,f_3\\}\\).\n\n\nSolution. On trouve que \\[\nf_1\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} \\frac{1}{2} & 0 \\\\ 0 & \\frac{1}{2} \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix}, \\quad\nf_2\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} \\frac{1}{2} & 0 \\\\ 0 & \\frac{1}{2} \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} 8 \\\\ 0 \\end{pmatrix}.\n\\] Pour \\(f_3\\), c’est la composée d’une rotation \\(r\\), d’une contraction \\(c\\) et d’une translation \\(t\\). Ainsi, \\[\nf_3\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 & -\\frac{4}{5} \\\\ \\frac{5}{16} & 0 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} 16 \\\\ 5 \\end{pmatrix}.\n\\]\n\n\nQuelle est la dimension de similitude généralisée de \\(A\\)?\n\n\nSolution. Dans cette situation, nous ne sommes pas en mesure de déterminer la dimension de similitude de cet ensemble, ni même la dimension de similitude généralisée. En effet, l’une des transformations n’est pas une similitude.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/SIF/SIF.html#question-5",
     "href": "exercices/SIF/SIF.html#question-5",
     "title": "05 - Les SIF",
     "section": "Question 5",
-    "text": "Question 5\nConsidérons le SIF formé des contractions \\[\nw_1\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\frac{1}{3} \\begin{pmatrix} x \\\\ y \\end{pmatrix}, \\quad\nw_2\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\frac{1}{3} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} \\frac{2}{3} \\\\ 0 \\end{pmatrix}.\n\\]\nSoit \\(C = \\{(x,y) : x,y \\in [0,1]\\}\\).\n\nReprésentez \\(C\\) dans le plan.\n\n\nSolution. \n\n\nTrouvez \\(W(C)\\) et le représenter dans le plan.\n\n\nSolution. \n\n\nTrouvez \\(W^{2}(C)\\) et le représenter dans le plan.\n\n\nSolution. \n\n\nQue vaut \\(d_H(W(C),C)\\)?\n\n\nSolution. Du dessin ci-dessous, on déduit que \\(d_H(W(C),C) = \\frac{\\sqrt{17}}{6}\\).\n\n\n\nLe point P est le point de C le plus éloigné des points appartenant à W(C).\n\n\n\n\nQue vaut le rapport de contraction du SIF ?\n\n\nSolution. \\(\\frac{1}{3}\\)\n\n\nSoit \\(A\\) l’attracteur du SIF considéré. Utilisez le théorème de Hutchinson pour trouver une valeur de \\(n\\) telle que \\[\nd_{H}\\left(W^{n}(C),A\\right) \\leq 0{,}01.\n\\]\n\n\nSolution. On doit choisir \\(n \\geq 5\\)."
+    "text": "Question 5\nConsidérons le SIF formé des contractions \\[\nw_1\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\frac{1}{3} \\begin{pmatrix} x \\\\ y \\end{pmatrix}, \\quad\nw_2\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\frac{1}{3} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} \\frac{2}{3} \\\\ 0 \\end{pmatrix}.\n\\]\nSoit \\(C = \\{(x,y) : x,y \\in [0,1]\\}\\).\n\nReprésentez \\(C\\) dans le plan.\n\n\nSolution. \n\n\n\nEnsemble C\n\n\n\n\nTrouvez \\(W(C)\\) et le représenter dans le plan.\n\n\nSolution. \n\n\n\nEnsemble W(C)\n\n\n\n\nTrouvez \\(W^{2}(C)\\) et le représenter dans le plan.\n\n\nSolution. \n\n\n\nEnsemble \\(W^{2}(C)\\)\n\n\n\n\nQue vaut \\(d_H(W(C),C)\\)?\n\n\nSolution. Du dessin ci-dessous, on déduit que \\(d_H(W(C),C) = \\frac{\\sqrt{17}}{6}\\).\n\n\n\nLe point P est le point de C le plus éloigné des points appartenant à W(C).\n\n\n\n\nQue vaut le rapport de contraction du SIF ?\n\n\nSolution. \\(\\frac{1}{3}\\)\n\n\nSoit \\(A\\) l’attracteur du SIF considéré. Utilisez le théorème de Hutchinson pour trouver une valeur de \\(n\\) telle que \\[\nd_{H}\\left(W^{n}(C),A\\right) \\leq 0{,}01.\n\\]\n\n\nSolution. On doit choisir \\(n \\geq 5\\).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/SIF/SIF.html#question-6-défi-facultatif",
     "href": "exercices/SIF/SIF.html#question-6-défi-facultatif",
     "title": "05 - Les SIF",
     "section": "Question 6 (Défi facultatif)",
-    "text": "Question 6 (Défi facultatif)\nRépondez aux sous-questions de la question 3 pour la figure ci-dessous.\n\n\n\nFougère de Barnsley"
+    "text": "Question 6 (Défi facultatif)\nRépondez aux sous-questions de la question 3 pour la figure ci-dessous.\n\n\n\nFougère de Barnsley",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>05 - Les SIF</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html",
     "href": "exercices/NumInfo/NumInfo.html",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "",
-    "text": "Questions sur la représentation des nombres et les images"
+    "text": "Questions sur la représentation des nombres et les images",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-1",
     "href": "exercices/NumInfo/NumInfo.html#question-1",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 1",
-    "text": "Question 1\nChacune des chaînes de 8 bits suivantes est associée à un nombre entier entre 0 et 255 selon sa représentation en base 2. Trouvez-le.\n\n00010000\n\n\nSolution. 16\n\n\n10101010\n\n\nSolution. 170\n\n\n00001111\n\n\nSolution. 15\n\n\n11111011\n\n\nSolution. 251"
+    "text": "Question 1\nChacune des chaînes de 8 bits suivantes est associée à un nombre entier entre 0 et 255 selon sa représentation en base 2. Trouvez-le.\n\n00010000\n\nSolution. 16\n\n10101010\n\nSolution. 170\n\n00001111\n\nSolution. 15\n\n11111011\n\nSolution. 251",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-2",
     "href": "exercices/NumInfo/NumInfo.html#question-2",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 2",
-    "text": "Question 2\nChacun des nombres entiers entre 0 et 255 peut être représenté par une chaîne de 8 bits à l’aide de sa représentation en base 2. Trouvez les chaînes correspondant à chacun des entiers ci-dessous.\n\n0\n\n\nSolution. 00000000\n\n\n21\n\n\nSolution. 00010101\n\n\n144\n\n\nSolution. 10010000\n\n\n251\n\n\nSolution. 11111011"
+    "text": "Question 2\nChacun des nombres entiers entre 0 et 255 peut être représenté par une chaîne de 8 bits à l’aide de sa représentation en base 2. Trouvez les chaînes correspondant à chacun des entiers ci-dessous.\n\n0\n\nSolution. 00000000\n\n21\n\nSolution. 00010101\n\n144\n\nSolution. 10010000\n\n251\n\nSolution. 11111011",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-3",
     "href": "exercices/NumInfo/NumInfo.html#question-3",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 3",
-    "text": "Question 3\nChacun des nombres ci-dessous est écrit en base dix. Veuillez écrire ces nombres selon les conventions de la numération en base hexadécimale.\n\n10\n\n\nSolution. A\n\n\n100\n\n\nSolution. 64\n\n\n243\n\n\nSolution. F3\n\n\n9999\n\n\nSolution. 270F"
+    "text": "Question 3\nChacun des nombres ci-dessous est écrit en base dix. Veuillez écrire ces nombres selon les conventions de la numération en base hexadécimale.\n\n10\n\nSolution. A\n\n100\n\nSolution. 64\n\n243\n\nSolution. F3\n\n9999\n\nSolution. 270F",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-4",
     "href": "exercices/NumInfo/NumInfo.html#question-4",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 4",
-    "text": "Question 4\nChaque nombre entier peut être représenté par une chaîne de symboles selon les conventions de la numération en base hexadécimale. Ci-dessous sont représentés des nombres entiers selon ces conventions. Déterminez de quels nombres entiers il s’agit.\n\n123\n\n\nSolution. 291\n\n\n1AC\n\n\nSolution. 428\n\n\nABBA\n\n\nSolution. 43,962\n\n\n9C9A\n\n\nSolution. 40,090"
+    "text": "Question 4\nChaque nombre entier peut être représenté par une chaîne de symboles selon les conventions de la numération en base hexadécimale. Ci-dessous sont représentés des nombres entiers selon ces conventions. Déterminez de quels nombres entiers il s’agit.\n\n123\n\nSolution. 291\n\n1AC\n\nSolution. 428\n\nABBA\n\nSolution. 43 962\n\n9C9A\n\nSolution. 40 090",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-5",
     "href": "exercices/NumInfo/NumInfo.html#question-5",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 5",
-    "text": "Question 5\nQuelle sera la taille, en octets d’une chaîne de 16 symboles hexadécimaux ?\n\nSolution. 8 octets"
+    "text": "Question 5\nQuelle sera la taille, en octets d’une chaîne de 16 symboles hexadécimaux ?\n\nSolution. 8 octets",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-6",
     "href": "exercices/NumInfo/NumInfo.html#question-6",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 6",
-    "text": "Question 6\nPour chaque type de photo décrit ci-dessous, déterminez quelle sera la taille, en octets, d’une image dont la résolution est \\(1024 \\times 1280\\) pixels.\n\nUne image en noir et blanc seulement.\n\n\nSolution. 163,840 octets\n\n\nUne image faisant intervenir 256 tons de gris.\n\n\nSolution. 1,310,720 octets\n\n\nUne image dont le mode de description des couleurs est le RGB (Red, Green, Blue), où chacune des composantes de base peut prendre 256 tons différents.\n\n\nSolution. 3,932,160 octets\n\n\nL’image en (c) ayant subi une compression de rapport \\(4:1\\).\n\n\nSolution. 983,040 octets"
+    "text": "Question 6\nPour chaque type de photo décrit ci-dessous, déterminez quelle sera la taille, en octets, d’une image dont la résolution est \\(1024 \\times 1280\\) pixels.\n\nUne image en noir et blanc seulement.\n\nSolution. 163 840 octets\n\nUne image faisant intervenir 256 tons de gris.\n\nSolution. 1 310 720 octets\n\nUne image dont le mode de description des couleurs est le RGB (Red, Green, Blue), où chacune des composantes de base peut prendre 256 tons différents.\n\nSolution. 3 932 160 octets\n\nL’image en (c) ayant subi une compression de rapport \\(4:1\\).\n\nSolution. 983 040 octets",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-7",
     "href": "exercices/NumInfo/NumInfo.html#question-7",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 7",
-    "text": "Question 7\nQuelle est la différence entre une image vectorielle et une image matricielle ?\n\nSolution. Pour une image matricielle, l’information est emmagasinée pixel par pixel. Pour ce qui est de l’image vectorielle, elle est définie par des éléments (ligne, points, courbes, etc.). À chaque fois qu’on visualise une image vectorielle, des calculs sont effectués, ce qui n’est pas le cas des images matricielles. Aussi, une image vectorielle peut être agrandie sans perte de qualité, contrairement aux images matricielles."
+    "text": "Question 7\nQuelle est la différence entre une image vectorielle et une image matricielle ?\n\nSolution. Pour une image matricielle, l’information est emmagasinée pixel par pixel. Pour ce qui est de l’image vectorielle, elle est définie par des éléments (ligne, points, courbes, etc.). À chaque fois qu’on visualise une image vectorielle, des calculs sont effectués, ce qui n’est pas le cas des images matricielles. Aussi, une image vectorielle peut être agrandie sans perte de qualité, contrairement aux images matricielles.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
   },
   {
     "objectID": "exercices/NumInfo/NumInfo.html#question-8",
     "href": "exercices/NumInfo/NumInfo.html#question-8",
-    "title": "06 - Numération et stockage en informatique",
+    "title": "06 - Numération et stockage",
     "section": "Question 8",
-    "text": "Question 8\nPourquoi une image en format .BMP est-elle plus volumineuse, à format égal, qu’une image de type .JPEG ?\n\nSolution. Une image en format .BMP est une image matricielle qui n’a subi aucun type de compression. Ainsi, une même quantité d’information décrit chacun des pixels de l’image.\nPour une image en format .JPEG, l’image a été divisée en un certain nombre de blocs, qui dépend du taux de compression, afin de diminuer la taille finale de l’image. On essaie de conserver le plus d’information possible pour les blocs où il y a un grand changement de contraste, et peu pour ceux où il y a uniformité à l’intérieur d’un même bloc de pixels."
+    "text": "Question 8\nPourquoi une image en format .BMP est-elle plus volumineuse, à format égal, qu’une image de type .JPEG ?\n\nSolution. Une image en format .BMP est une image matricielle qui n’a subi aucun type de compression. Ainsi, une même quantité d’information décrit chacun des pixels de l’image.\nPour une image en format .JPEG, l’image a été divisée en un certain nombre de blocs, qui dépend du taux de compression, afin de diminuer la taille finale de l’image. On essaie de conserver le plus d’information possible pour les blocs où il y a un grand changement de contraste, et peu pour ceux où il y a uniformité à l’intérieur d’un même bloc de pixels.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>06 - Numération et stockage</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html",
+    "href": "exercices/Crypto1/Crypto1.html",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "",
+    "text": "Question 1\nChiffrez le mot guitare selon la méthode de Jules César.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-1",
+    "href": "exercices/Crypto1/Crypto1.html#question-1",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "",
+    "text": "Solution. JXLWDUH",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-2",
+    "href": "exercices/Crypto1/Crypto1.html#question-2",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "Question 2",
+    "text": "Question 2\nLe mot DXWR a été obtenu après avoir chiffré un message selon la méthode de Jules César. Quel était le message d’origine ?\n\nSolution. auto",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-3",
+    "href": "exercices/Crypto1/Crypto1.html#question-3",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "Question 3",
+    "text": "Question 3\nUn cryptosystème basé sur le décalage chiffre le mot chien en HMNJS. De quelle façon sera chiffré le mot chat ?\n\nSolution. HMFY",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-4",
+    "href": "exercices/Crypto1/Crypto1.html#question-4",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "Question 4",
+    "text": "Question 4\nChiffrez le message jaimelesexpos avec la méthode de Vigenère en utilisant la clé \\((1,3,24)\\).\n\nSolution. KDGNHJFVCYSMT",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-5",
+    "href": "exercices/Crypto1/Crypto1.html#question-5",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "Question 5",
+    "text": "Question 5\nSoient (a, b) et (c) des entiers avec (a ). Montrez les énoncés ci-dessous.\n\nSi (a|b), alors (a|bc).\nSi (b ), alors (a|b) et (b|c) entraînent que (a|c).\nSi (a|b) et (a|c), alors (a|(bx+cy)) pour tout (x, y ).\nSi (b ), le fait que (a|b) et (b|a) implique que (a = b).\nSi (c ) et que (a|b), alors (ac|bc).\n\n\nSolution. \n\nSi (a|b), alors il existe (k ) tel que (b = ka). Ainsi, (bc = kac = ja), où (j = kc ). On a donc (a|bc).\nSi (a|b) et (b|c), alors il existe (k) et (j ) tels que (b = ka) et (c = jb). Nous avons donc (c = jka = la), où (l = jk ). Cela montre que (a) divise (c).\nSi (a|b) et (a|c), alors il existe (k, j ) tels que (b = ka) et (c = ja). Nous avons donc pour tout (x, y ), [ bx + cy = kax + jay = (kx + jy)a = la, ] où (l = kx + jy ). Ainsi, (a|(bx+cy)).\nSi (a|b) et (b|a), alors il existe (k, j ) tels que (b = ka) et (a = jb). On doit donc avoir (b = jka). Comme (b ), (jk = 1). Les nombres (j) et (k) étant des entiers, (j = k = 1) ou (j = k = -1). Dans le premier cas, (a = b), et dans l’autre, (a = -b).\nSi (a|b), alors il existe (k ) tel que (b = ka). On a donc (bc = k(ac)). Les nombres (a) et (c) étant tous les deux différents de 0, (ac|bc).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-6",
+    "href": "exercices/Crypto1/Crypto1.html#question-6",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "Question 6",
+    "text": "Question 6\nSoient (a, b, c, d) et (m), des entiers avec (m &gt; 0). Montrez chacune des énoncés ci-dessous.\n\n((a, b, m)), ((b, a, m)) et ((a-b, 0, m)) sont des énoncés équivalents.\nSi ((a, b, m)) et ((c, d, m)), alors ((a+c, b+d, m)).\nSi ((a, b, m)) et ((b, c, m)), alors ((a, c, m)).\nSi ((ax, ay, m)) et que ((a, m) = 1), alors ((x, y, m)).\n((ax, ay, m)) n’implique pas que ((x, y, m)).\n\n\nSolution. \n\nLes preuves montrent que si (m | (a-b)), alors (m | (b-a)) et (m | (a-b)) implique que (m | 0). Ces relations prouvent l’équivalence des trois énoncés.\nSi (m | (a-b)) et (m | (c-d)), alors (m | (a+c) - (b+d)), ce qui donne ((a+c, b+d, m)).\nSi (m | (a-b)) et (m | (b-c)), alors (m | (a-c)), ce qui donne ((a, c, m)).\nUtilisation du lemme d’Euclide : si ((a, m) = 1), alors (m | (x-y)).\nExemple : ((2x, 2y, 10)) mais ((x, y, 5)).",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
+  },
+  {
+    "objectID": "exercices/Crypto1/Crypto1.html#question-7",
+    "href": "exercices/Crypto1/Crypto1.html#question-7",
+    "title": "07 - Cryptographie (partie 1)",
+    "section": "Question 7",
+    "text": "Question 7\nEn utilisant l’algorithme d’Euclide et des calculs supplémentaires, répondez aux questions ci-dessous.\n\nTrouvez le PGCD de (42,823) et (6,409).\nTrouvez (x, y) tels que (42,823x + 6,409y = 17).\nFactorisez (42,823) et (6,409) en nombres premiers.\nRetrouver le PGCD à partir des factorisations.\n\n\nSolution. \n\nEn appliquant l’algorithme d’Euclide, nous obtenons que ((42,823, 6,409) = 17).\nEn rétro-substituant dans les étapes de l’algorithme d’Euclide, nous trouvons (x = -22) et (y = 147).\nLes factorisations premières sont :\n\n(6,409 = 13 )\n(42,823 = 11 )\n\nLe PGCD obtenu par les factorisations est (17), confirmant le résultat de l’algorithme d’Euclide.",
+    "crumbs": [
+      "Exercices",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>07 - Cryptographie (partie 1)</span>"
+    ]
   }
 ]
