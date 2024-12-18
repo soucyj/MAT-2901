@@ -1,0 +1,253 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = fr_FR
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{commandesJS}[2023/10/14 Commandes personnalisées pour les mathématiques]
+
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{xspace} % Pour les vrai ou faux
+\RequirePackage{graphicx} % Pour le bullet
+\RequirePackage{interval}
+
+%----------------------------------------------------------------
+% Ensembles de nombres
+%----------------------------------------------------------------
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\Rp}{\interval[open right]{0}{\infty}}
+\DeclareMathOperator{\Rps}{\interval[open]{0}{\infty}}
+\DeclareMathOperator{\Rneg}{\interval[open left]{-\infty}{0}}
+\DeclareMathOperator{\Rns}{\interval[open]{-\infty}{0}}
+\DeclareMathOperator{\Rs}{\mathbb{R}^{\star}}
+\DeclareMathOperator{\Cs}{\mathbb{C}^{\star}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Zn}{\mathbb{Z}_{\leq 0}}
+\DeclareMathOperator{\Zs}{\mathbb{Z}^{\star}}
+\DeclareMathOperator{\Zns}{\mathbb{Z}_{< 0}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\Qs}{\mathbb{Q}^{\star}}
+\DeclareMathOperator{\Qp}{\mathbb{Q}_{\geq 0}}
+\DeclareMathOperator{\Qps}{\mathbb{Q}_{> 0}}
+\DeclareMathOperator{\Qn}{\mathbb{Q}_{\leq 0}}
+\DeclareMathOperator{\Qns}{\mathbb{Q}_{< 0}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Ns}{\mathbb{N}^{\star}}
+
+%----------------------------------------------------------------
+% Constantes universelles
+%----------------------------------------------------------------
+\DeclareMathOperator{\eu}{e}
+\DeclareMathOperator{\piu}{\pi}
+\DeclareMathOperator{\iu}{i}
+\DeclareMathOperator{\gammau}{\gamma}
+
+%----------------------------------------------------------------
+% Intégrales et autres opérateurs
+%----------------------------------------------------------------
+\NewDocumentCommand{\evint}{mmm}{\left[#1\right]_{#2}^{#3}}
+
+% Vrai/Faux
+\NewDocumentCommand{\vrai}{}{\textsc{vrai}\xspace}
+\NewDocumentCommand{\faux}{}{\textsc{faux}\xspace}
+
+%----------------------------------------------------------------
+% Intervalles
+%----------------------------------------------------------------
+\NewDocumentCommand{\intff}{mm}{\interval{#1}{#2}}
+\NewDocumentCommand{\intoo}{mm}{\interval[open]{#1}{#2}}
+\NewDocumentCommand{\intof}{mm}{\interval[open left]{#1}{#2}}
+\NewDocumentCommand{\intfo}{mm}{\interval[open right]{#1}{#2}}
+\NewDocumentCommand{\intent}{mm}{\llbracket #1 , #2\rrbracket}
+
+%----------------------------------------------------------------
+% Fonctions hyperboliques et spéciales
+%----------------------------------------------------------------
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccosec}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\DeclareMathOperator{\arcsch}{arcsch}
+\DeclareMathOperator{\arcoth}{arcoth}
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\Li}{Li}
+\DeclareMathOperator{\li}{li}
+\DeclareMathOperator{\Ei}{Ei}
+
+\NewDocumentCommand{\floor}{m}{\left\lfloor #1 \right\rfloor}
+\NewDocumentCommand{\ceil}{m}{\left\lceil #1 \right\rceil}
+
+%----------------------------------------------------------------
+% Analyse complexe
+%----------------------------------------------------------------
+\let\Re\relax
+\let\Im\relax
+\DeclareMathOperator{\RE}{Re}
+\DeclareMathOperator{\IM}{Im}
+%\DeclareMathOperator{\arg}{arg}
+\DeclareMathOperator{\Arg}{Arg}
+\NewDocumentCommand{\ol}{m}{\overline{#1}}
+\NewDocumentCommand{\zbar}{}{\overline{z}}
+
+%----------------------------------------------------------------
+% Analyse vectorielle
+%----------------------------------------------------------------
+\DeclareMathOperator{\rotation}{rot}
+\NewDocumentCommand{\psc}{}{%
+  \mathbin{\vcenter{\hbox{\scalebox{0.7}{$\bullet$}}}}%
+}
+
+%----------------------------------------------------------------
+% Texte en exposant ou en indice
+%----------------------------------------------------------------
+\NewDocumentCommand{\ped}{m}{\ensuremath{_\mathrm{#1}}}
+\NewDocumentCommand{\ap}{m}{\ensuremath{^\mathrm{#1}}}
+\NewDocumentCommand{\siecle}{m}{\textsc{\romannumeral #1}\textsuperscript{e}~siècle}
+
+%----------------------------------------------------------------
+% Ensembles
+%----------------------------------------------------------------
+\DeclareMathOperator{\similitude}{\mathcal{S}}
+\DeclareMathOperator{\isometrie}{\mathcal{I}}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Img}{Img}
+\DeclareMathOperator{\Codom}{Cod}
+\DeclareMathOperator{\Cod}{Cod}
+
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\cardinalite}{Card}
+\DeclareMathOperator{\card}{Card}
+\DeclareMathOperator{\Card}{Card}
+\NewDocumentCommand{\comp}{og}{%
+  \IfValueTF{#2}
+    {\mathopen{(}#2\mathclose{)}^{\mathsf{c}}}
+    {%
+      \IfValueTF{#1}
+        {\mathopen{(}#1\mathclose{)}^{\mathsf{c}}}
+        {^{\mathsf{c}}}%
+    }%
+}
+%----------------------------------------------------------------
+% Probabilités
+%----------------------------------------------------------------
+\DeclareMathOperator{\variance}{Var}
+\DeclareMathOperator{\covariance}{Cov}
+
+\NewDocumentCommand{\loiuniforme}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\text{uniforme}\left(#2\,;#3\right)}
+    {\text{uniforme}\left(#2,#3\right)}%
+}
+
+\NewDocumentCommand{\loiexponentielle}{m}{%
+  \text{exponentielle}\left(#1\right)%
+}
+
+\NewDocumentCommand{\loigeometrique}{m}{%
+  \text{g\'eom\'etrique}\left(#1\right)%
+}
+
+\NewDocumentCommand{\loiPoisson}{m}{%
+  \text{Poisson}\left(#1\right)%
+}
+
+\NewDocumentCommand{\loiBernoulli}{m}{%
+  \text{Bernoulli}\left(#1\right)%
+}
+
+\NewDocumentCommand{\loibinomiale}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\text{binomiale}\left(#2\,;#3\right)}
+    {\text{binomiale}\left(#2,#3\right)}%
+}
+
+\NewDocumentCommand{\loibinomialenegative}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\text{binomiale n\'egative}\left(#2\,;#3\right)}
+    {\text{binomiale n\'egative}\left(#2,#3\right)}%
+}
+
+\NewDocumentCommand{\loigamma}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\text{gamma}\left(#2\,;#3\right)}
+    {\text{gamma}\left(#2,#3\right)}%
+}
+
+\NewDocumentCommand{\loibeta}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\text{b\^eta}\left(#2\,;#3\right)}
+    {\text{b\^eta}\left(#2,#3\right)}%
+}
+
+\NewDocumentCommand{\loiCauchy}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\text{Cauchy}\left(#2\,;#3\right)}
+    {\text{Cauchy}\left(#2,#3\right)}%
+}
+
+\NewDocumentCommand{\loihypergeometrique}{O{}mmm}{%
+  \IfStrEq{#1}{num}
+    {\text{hyperg\'eom\'etrique}\left(#2\,;#3\,;#4\right)}
+    {\text{hyperg\'eom\'etrique}\left(#2,#3,#4\right)}%
+}
+
+\NewDocumentCommand{\loinormale}{O{}mm}{%
+  \IfStrEq{#1}{num}
+    {\mathcal{N}\left(#2\,;#3\right)}
+    {\mathcal{N}\left(#2,#3\right)}%
+}
+
+\RenewDocumentCommand{\P}{m}{\mathbb{P}\mathopen{}\left(#1\right)\mathclose{}}
+\NewDocumentCommand{\Es}{m}{\mathbb{E}\mathopen{}\left(#1\right)\mathclose{}}
+\NewDocumentCommand{\Cov}{m}{\covariance\mathopen{}\left(#1\right)\mathclose{}}
+\NewDocumentCommand{\Var}{m}{\variance\mathopen{}\left(#1\right)\mathclose{}}
+\NewDocumentCommand{\cov}{m}{\covariance\mathopen{}\left(#1\right)\mathclose{}}
+\NewDocumentCommand{\var}{m}{\variance\mathopen{}\left(#1\right)\mathclose{}}
+
+
+
+%----------------------------------------------------------------
+% Théorie des nombres
+%----------------------------------------------------------------
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\NewDocumentCommand{\Mod}{mmm}{#1\equiv #2 \text{~mod} \,{#3}}
+
+%----------------------------------------------------------------
+% Algèbre linéaire
+%----------------------------------------------------------------
+\NewDocumentCommand{\matdeux}{mmmm}{%
+  \begin{pmatrix}
+    #1 & #2 \\
+    #3 & #4
+  \end{pmatrix}%
+}
+
+\NewDocumentCommand{\mattrois}{mmmmmmmmm}{%
+  \begin{pmatrix}
+    #1 & #2 & #3 \\
+    #4 & #5 & #6 \\
+    #7 & #8 & #9
+  \end{pmatrix}%
+}
+
+\NewDocumentCommand{\vdeux}{mm}{%
+  \begin{pmatrix}
+    #1 \\ #2
+  \end{pmatrix}%
+}
+
+\NewDocumentCommand{\vtrois}{mmm}{%
+  \begin{pmatrix}
+    #1 \\ #2 \\ #3
+  \end{pmatrix}%
+}
+
+\endinput

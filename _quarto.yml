@@ -28,11 +28,11 @@ book:
     - part: "Exercices"
       chapters:
       - exercices/IntroFractales/IntroFractales.qmd
-#      - exercices/TransPlan/TransPlan.qmd
-#      - exercices/EspacesMet/EspacesMet.qmd
-#      - exercices/PtFixes/PtFixes.qmd
-#      - exercices/SIF/SIF.qmd
-#      - exercices/NumInfo/NumInfo.qmd
+      - exercices/TransPlan/TransPlan.qmd
+      - exercices/EspacesMet/EspacesMet.qmd
+      - exercices/PtFixes/PtFixes.qmd
+      - exercices/SIF/SIF.qmd
+      - exercices/NumInfo/NumInfo.qmd
 #      - exercices/Crypto1/Crypto1.qmd
 #      - exercices/Crypto2/Crypto2.qmd
 #      - exercices/Crypto3/Crypto3.qmd
@@ -49,6 +49,8 @@ format:
     css:
       - styles.css # Assurez-vous que le chemin est correct
     include-in-header:
+      - text: |
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       - text: |
           <style>
           ol {

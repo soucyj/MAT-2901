@@ -1,97 +1,368 @@
 ---
-title: "Les équations différentielles"
+title: "03 - Espaces métriques"
 author: "Jérôme Soucy"
 ---
 
 ## Question 1
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = 2xy$
+Soit $P(x_1,y_1)$ et $Q(x_2,y_2)$ des éléments de $\mathbb{R}^2$. Déterminez si les fonctions suivantes sont des métriques sur $\mathbb{R}^2$. Dans chacun des cas, justifiez votre réponse.
 
-::: solution
-D'abord, on réorganise l'équation comme $\frac{1}{y}dy = 2x dx$. Nous avons divisé par $y$, que nous supposons différente de la fonction identiquement nulle pour la suite. Remarquons que la fonction identiquement nulle est une solution de l'équation différentielle.
+1. $d(P,Q) = |x_1-x_2| + |y_1-y_2|$
 
-Intégrons les deux membres de l'équation : $\int \frac{1}{y}dy = \int 2x dx$. Nous obtenons que$\ln|y| = x^2 + C$. En prenant l'exponentielle, nous obtenons que $|y|=e^{C}e^{x^2}$. Ainsi, $|y|=C_1e^{x^2}$, où $C_1$ est une constante strictement positive. De là nous avons que $y=C_2e^{x^2}$, où $C_2$ est une constante réelle non nulle. Finalement, on se rappelle que $y=0$ est solution de l'équation différentielle de départ, ce qui nous permet d'écrire que l'ensemble des solutions de l'équation différentielle est formé de toutes les fonctions de la forme $y=Ke^{x^2}, K\in\mathbb{R}$.
-:::
+   ::: solution
+   Oui, c'est la distance euclidienne.
+   :::
+
+2. $d(P,Q) = |x_1-x_2| \cdot |y_1-y_2|$
+
+   ::: solution
+   Non, par exemple $d((1,0),(1,1))=0$ alors que les points $(1,0)$ et $(1,1)$ sont distincts. Cela contredit la propriété d'une métrique voulant que $d(P,Q)=0\Rightarrow P=Q$.
+   :::
+
+3. $d(P,Q) = |x_1+x_2| + |y_1+y_2|$
+
+   ::: solution
+   Non, par exemple $d((1,0),(-1,0))=0$ alors que les points $(1,0)$ et $(-1,0)$ sont distincts. Cela contredit la propriété d'une métrique voulant que $d(P,Q)=0\Rightarrow P=Q$.
+   :::
+
 
 ## Question 2
 
-Résoudre l'équation différentielle $$\frac{dy}{dx} = \frac{x}{y}.$$
+Soit l'espace métrique $\left(\mathbb{R}^2,d\right)$, où $d$ est la métrique définie par 
+$$
+d\left((x_1,y_1),(x_2,y_2)\right) = |x_1-x_2| + 2|y_1-y_2|.
+$$
+Dessinez la boule ouverte centrée à l'origine de rayon $r$.
 
 ::: solution
-On sépare les variables pour obtenir l'équation $y dy = x dx$. On intègre ensuite les deux membres de l'équation : $\int y dy = \int x dx$. Nous obtenons que $\frac{y^2}{2} = \frac{x^2}{2} + C$. Ainsi, la solution générale est $$y = \pm\sqrt{x^2 + K},$$
-où $K$ est une constante arbitraire.
+L'intérieur du losange de sommets $\left(0,\frac{1}{2}\right), \left(1,0\right), \left(0,-\frac{1}{2}\right), \left(-1,0\right)$.
 :::
+
 
 ## Question 3
 
-Résoudre l'équation différentielle $$\frac{dy}{dx} = \frac{y}{x}.$$
+Est-ce que l'espace métrique $\left(\mathbb{R} \setminus \mathbb{Q}, d_E\right)$ est complet? Justifiez.
 
 ::: solution
-On sépare les variables pour obtenir l'équation $\frac{dy}{y} = \frac{dx}{x}$. On a divisé par $y$, on supposera donc pour la suite que $y$ n'est pas identiquement nulle. On remarque aussi que la fonction identiquement nulle est une solution de l'équation différentielle.
-
-On intègre ensuite les deux membres de l'équation : $\int \frac{dy}{y} = \int \frac{dx}{x}$. Nous obtenons que $\ln|y| = \ln|x| + C$. Comme la fonction $\ln$ est une bijection des réels strictement positifs vers $\mathbb{R}$, il existe un unique $k\in\mathbb{R}_{>0}$ tel que $C=\ln k$. Ainsi,
-$$\ln|y| = \ln|x| + C=\ln|x| + \ln k=\ln k|x|.$$ L'injectivité de la fonction $\ln$ implique que
-$y=\pm k|x|$. Si on trace ces courbes, on constate qu'il s'agit des droites de pente non nulle passant par l'origine. Comme la droite $y(x)=0$ est une solution (on l'a remarqué plus tôt), l'ensemble des solutions consiste à être l'ensemble des droites passant par l'origine, c'est-à-dire aux courbes d'équation $y(x)=Dx, D\in\mathbb{R}$.
+Non. Il suffit de considérer une suite de nombres irrationnels qui converge vers un nombre rationnels. Par exemple, la suite $(x_n)$ où $x_n=\frac{\sqrt{2}}{n}$ est une suite de Cauchy dans $\mathbb{R} \setminus \mathbb{Q}$ qui converge vers $0$, un nombre qui n'est pas dans cet ensemble.
 :::
+
 
 ## Question 4
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = y^2$
+Donnez le terme général d'une suite $(x_n)$ de nombres rationnels qui converge vers $\sqrt{2}$, faisant de $\left(\mathbb{Q}, d_E\right)$ un espace métrique qui n'est pas complet.
 
 ::: solution
-On constate que $y(x)=0$ est une solution. Maintenant, pour trouver les solutions non nulles, divisons par $y^2$ pour séparer les variables. On obtient ainsi que
-$$\frac{dy}{y^2} = dx.$$
-En intégrant chacun des membres de l'équation, nous obtenons que
-$$-\frac{1}{y} = x + C,$$
-où $C$ est une constante réelle arbitraire. On isole par la suite $y$, pour obtenir une solution de la forme
-$$y = -\frac{1}{x + K},$$
-où $K$ est une constante réelle arbitraire.
+Plusieurs réponses possibles, le graphe de la fonction $f(x)=x^2-2$ et la construction de tangentes bien choisies peut vous suggérer une méthode.
 :::
+
 
 ## Question 5
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = e^{x-y}$
+Vrai ou faux avec justification. Soit $(x_n)$ une suite dans un espace métrique $\left(E,d\right)$. Si 
+$$
+d(x_n,a) < \frac{1}{n} \text{ pour tout } n \geq 1000,
+$$
+alors $a \in E$.
 
 ::: solution
-Pour résoudre cette équation, commençons par réorganiser les termes afin de séparer les variables. En multipliant chaque membre par $e^y$, nous obtenons
-$$e^y dy = e^x dx.$$
-En intégrant chacun des membres de l'équation, nous obtenons que
-$$e^y = e^x + C,$$
-où $C$ est une constante réelle arbitraire. On isole par la suite $y$ en appliquant le logarithme naturel de chaque côté, pour obtenir une solution de la forme
-$$y(x) = \ln(e^x + C).$$
+Faux, la suite considérée à la question 3 fourni un contre-exemple.
 :::
+
 
 ## Question 6
-Lorsqu'une personne avale une substance toxique, son foie tente de l'éliminer. Généralement, le taux d'élimination de la quantité de substance encore présente dans l'organisme au temps $t$ --- que nous noterons $Q(t)$ --- est proportionnel à la quantité de substance encore présente dans l'organisme au temps $t$. Au temps $t=0$, Jocelyn a avalé une quantité $Q_0$ d'un liquide toxique. Après 3 heures, on a estimé que son foie avait éliminé 50\% du liquide. D'après ce modèle, combien d'heures se seront écoulées entre le moment où Jocelyn a avalé le produit et celui où il en aura éliminé 90\%?
+
+Pour chacun des ensembles ci-dessous, considérés dans l'espace métrique $\left(\mathbb{R}^2, d_E\right)$, déterminez lesquelles des caractéristiques suivantes sont possédées par l'ensemble : **Fermé**, **Ouvert**, **Borné**, **Compact**. Donnez aussi une représentation graphique de l'ensemble.
+
+1. $\left\{(x,y)\in\mathbb{R}^2 : -1 < x < 1 ~\text{et}~ 0 \leq y \leq 1\right\}$
+
+   ::: solution
+   Borné
+   ```{python}
+   import matplotlib.pyplot as plt
+   import numpy as np
+   
+   # Création de la figure et des axes
+   fig, ax = plt.subplots(figsize=(6, 6))
+   
+   # Dessiner la région remplie entre x = -1 et x = 1, y entre 0 et 1
+   x_fill = np.linspace(-1, 1, 1000)  # Points pour remplir le rectangle
+   y_bottom = np.zeros_like(x_fill)   # Bas de la région y = 0
+   y_top = np.ones_like(x_fill)       # Haut de la région y = 1
+   
+   ax.fill_between(x_fill, y_bottom, y_top, where=(x_fill > -1) & (x_fill < 1),
+   color='skyblue', alpha=0.5, label='-1 < x < 1, 0 ≤ y ≤ 1')
+   
+   # Tracer les segments horizontaux (inclus dans l'ensemble)
+   ax.hlines(y=0, xmin=-1, xmax=1, color='blue', linestyle='-', linewidth=2)
+   ax.hlines(y=1, xmin=-1, xmax=1, color='blue', linestyle='-', linewidth=2)
+   
+   # Tracer les lignes verticales pointillées aux limites x = -1 et x = 1 dans y ∈ [0, 1]
+   y_vertical = np.linspace(0, 1, 100)  # y de 0 à 1
+   ax.plot([-1] * len(y_vertical), y_vertical, 'b--', linewidth=2)  # x = -1
+   ax.plot([1] * len(y_vertical), y_vertical, 'b--', linewidth=2)   # x = 1
+   
+   # Ajouter les axes x et y qui s'intersectent en (0,0)
+   ax.axhline(0, color='black', linewidth=1)  # Axe des x
+   ax.axvline(0, color='black', linewidth=1)  # Axe des y
+   
+   # Configuration des limites et des graduations
+   ax.set_xlim(-1.5, 1.5)
+   ax.set_ylim(-0.5, 1.5)
+   ax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x
+   ax.set_yticks(np.arange(-0.5, 1.6, 0.5))  # Graduations sur y
+   
+   # Étiquettes des axes
+   ax.set_xlabel('$x$', fontsize=12)
+   ax.set_ylabel('$y$', fontsize=12)
+   ax.set_title(r"Ensemble : $-1 < x < 1$ et $0 \leq y \leq 1$", fontsize=14)
+   
+   # Affichage de la grille pour une meilleure lisibilité
+   ax.grid(True, linestyle='--', alpha=0.5)
+   
+   # Affichage du graphique
+   plt.show()
+   ```
+   :::
+
+2. $\left\{(x,y)\in\mathbb{R}^2 : y = x^2\right\}$
+
+   ::: solution
+   Fermé
+   ```{python}
+   import matplotlib.pyplot as plt
+   import numpy as np
+   
+   # Création de la figure et des axes
+   fig, ax = plt.subplots(figsize=(6, 6))
+   
+   # Définir les données pour la parabole y = x^2
+   x = np.linspace(-3, 3, 1000)  # Points entre -3 et 3
+   y = x**2  # Parabole
+   
+   # Tracer la parabole
+   ax.plot(x, y, color='blue', linewidth=2)
+   
+   # Ajouter les axes x et y qui s'intersectent en (0, 0)
+   ax.axhline(0, color='black', linewidth=1)  # Axe des x
+   ax.axvline(0, color='black', linewidth=1)  # Axe des y
+   
+   # Configuration des limites et des graduations
+   ax.set_xlim(-3.5, 3.5)
+   ax.set_ylim(-0.5, 10)
+   ax.set_xticks(np.arange(-3, 4, 1))  # Graduations sur x
+   ax.set_yticks(np.arange(0, 11, 2))  # Graduations sur y
+   
+   # Étiquettes des axes
+   ax.set_xlabel('$x$', fontsize=12)
+   ax.set_ylabel('$y$', fontsize=12)
+   ax.set_title(r"Parabole $y = x^2$", fontsize=14)
+   
+   
+   # Affichage de la grille pour une meilleure lisibilité
+   ax.grid(True, linestyle='--', alpha=0.5)
+   
+   # Affichage du graphique
+   plt.show()
+   ```
+   :::
+
+3. $\left\{(x,y)\in\mathbb{R}^2 : |x| = |y| ~\text{et}~ -1 \leq x \leq 1\right\}$
+
+   ::: solution
+   Borné, fermé et compact
+   ```{python}
+   import matplotlib.pyplot as plt
+   import numpy as np
+   
+   # Création de la figure et des axes
+   fig, ax = plt.subplots(figsize=(6, 6))
+   
+   x = np.linspace(-1, 1, 1000)  # Points entre -3 et 3
+   y = x
+   
+   # Tracer la parabole
+   ax.plot(x, y, color='blue', linewidth=2)
+   y=-x
+   ax.plot(x, y, color='blue', linewidth=2)
+   
+   # Ajouter les axes x et y qui s'intersectent en (0, 0)
+   ax.axhline(0, color='black', linewidth=1)  # Axe des x
+   ax.axvline(0, color='black', linewidth=1)  # Axe des y
+   
+   # Configuration des limites et des graduations
+   ax.set_xlim(-1.5, 1.5)
+   ax.set_ylim(-1.5, 1.5)
+   ax.set_xticks(np.arange(-1, 1, 1))  # Graduations sur x
+   ax.set_yticks(np.arange(-1, 1, 1))  # Graduations sur y
+   
+   # Étiquettes des axes
+   ax.set_xlabel('$x$', fontsize=12)
+   ax.set_ylabel('$y$', fontsize=12)
+   
+   # Affichage de la grille pour une meilleure lisibilité
+   ax.grid(True, linestyle='--', alpha=0.5)
+   
+   # Affichage du graphique
+   plt.show()
+   ```
+   :::
+
+4. $\left\{(x,y)\in\mathbb{R}^2 : 0 < y < 1\right\}$
+
+   ::: solution
+   Ouvert
+   ```{python}
+   import matplotlib.pyplot as plt
+   import numpy as np
+   
+   # Création de la figure et des axes
+   fig, ax = plt.subplots(figsize=(6, 6))
+   
+   # Dessiner la région remplie entre x = -1 et x = 1, y entre 0 et 1
+   x_fill = np.linspace(-2, 2, 1000)  # Points pour remplir le rectangle
+   y_bottom = np.zeros_like(x_fill)   # Bas de la région y = 0
+   y_top = np.ones_like(x_fill)       # Haut de la région y = 1
+   
+   ax.fill_between(x_fill, y_bottom, y_top, where=(x_fill > -2) & (x_fill < 2),
+   color='skyblue', alpha=0.5, label='0 < y < 1')
+   
+   # Tracer les segments horizontaux (inclus dans l'ensemble)
+   ax.hlines(y=0, xmin=-2, xmax=2, color='blue', linestyle='--', linewidth=2)
+   ax.hlines(y=1, xmin=-2, xmax=2, color='blue', linestyle='--', linewidth=2)
+   
+   # Tracer les lignes verticales pointillées aux limites x = -1 et x = 1 dans y ∈ [0, 1]
+ #  y_vertical = np.linspace(0, 1, 100)  # y de 0 à 1
+ #  ax.plot([-1] * len(y_vertical), y_vertical, 'b--', linewidth=2)  # x = -1
+ #  ax.plot([1] * len(y_vertical), y_vertical, 'b--', linewidth=2)   # x = 1
+   
+   # Ajouter les axes x et y qui s'intersectent en (0,0)
+   ax.axhline(0, color='black', linewidth=1)  # Axe des x
+   ax.axvline(0, color='black', linewidth=1)  # Axe des y
+   
+   # Configuration des limites et des graduations
+   ax.set_xlim(-2, 2)
+   ax.set_ylim(-0.5, 1.5)
+   ax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x
+   ax.set_yticks(np.arange(-0.5, 1.6, 0.5))  # Graduations sur y
+   
+   # Étiquettes des axes
+   ax.set_xlabel('$x$', fontsize=12)
+   ax.set_ylabel('$y$', fontsize=12)
+   
+   # Affichage de la grille pour une meilleure lisibilité
+   ax.grid(True, linestyle='--', alpha=0.5)
+   
+   # Affichage du graphique
+   plt.show()
+   ```
+   :::
+
+5. $\left\{(x,y)\in\mathbb{R}^2 : |x|+|y| < 1\right\}$
+
+   ::: solution
+   Ouvert et borné
+   ```{python}
+   import matplotlib.pyplot as plt
+   import numpy as np
+   
+   # Création de la figure et des axes
+   fig, ax = plt.subplots(figsize=(6, 6))
+   
+   # Générer les points pour tracer la frontière |x| + |y| = 1
+   x = np.linspace(-1, 1, 500)  # Intervalle pour x
+   y1 = 1 - np.abs(x)           # y positif pour la frontière
+   y2 = -(1 - np.abs(x))        # y négatif pour la frontière
+   
+   # Tracer la région remplie à l'intérieur de la frontière
+   x_fill = np.linspace(-1, 1, 500)
+   for x_i in x_fill:
+      ax.fill_between([x_i], -(1 - abs(x_i)), 1 - abs(x_i), color='skyblue', alpha=0.5)
+   
+   # Tracer la frontière en pointillés (|x| + |y| = 1)
+   ax.plot(x, y1, 'b--', linewidth=2)  # Partie supérieure
+   ax.plot(x, y2, 'b--', linewidth=2)  # Partie inférieure
+   
+   # Ajouter les axes x et y qui s'intersectent en (0,0)
+   ax.axhline(0, color='black', linewidth=1)  # Axe des x
+   ax.axvline(0, color='black', linewidth=1)  # Axe des y
+   
+   # Configuration des limites et des graduations
+   ax.set_xlim(-1.2, 1.2)
+   ax.set_ylim(-1.2, 1.2)
+   ax.set_xticks(np.arange(-1, 1.1, 0.5))  # Graduations sur x
+   ax.set_yticks(np.arange(-1, 1.1, 0.5))  # Graduations sur y
+   
+   # Étiquettes des axes
+   ax.set_xlabel('$x$', fontsize=12)
+   ax.set_ylabel('$y$', fontsize=12)
+   ax.set_title(r"Région : $|x| + |y| < 1$", fontsize=14)
+   
+   # Affichage de la grille pour une meilleure lisibilité
+   ax.grid(True, linestyle='--', alpha=0.5)
+   
+   # Affichage du graphique
+   plt.show()
+   ```
+   :::
+
+6. $\left\{(x,y)\in\mathbb{R}^2 : x^2 + y^2 = 1\right\}$
+
+   ::: solution
+   Borné, fermé et compact
+   ```{python}
+   import matplotlib.pyplot as plt
+   import numpy as np
+   
+   # Création de la figure et des axes
+   fig, ax = plt.subplots(figsize=(6, 6))
+   
+   # Paramètres pour tracer le cercle x^2 + y^2 = 1
+   theta = np.linspace(0, 2 * np.pi, 1000)  # Paramètre pour la circonférence
+   x = np.cos(theta)  # Coordonnées x sur le cercle
+   y = np.sin(theta)  # Coordonnées y sur le cercle
+   
+   # Tracer la frontière du cercle en pointillés
+   ax.plot(x, y, linestyle='-', color='blue', linewidth=2, label=r'$x^2 + y^2 = 1$')
+   
+   # Ajouter les axes x et y qui s'intersectent en (0,0)
+   ax.axhline(0, color='black', linewidth=1)  # Axe des x
+   ax.axvline(0, color='black', linewidth=1)  # Axe des y
+   
+   # Configuration des limites et des graduations
+   ax.set_xlim(-1.5, 1.5)
+   ax.set_ylim(-1.5, 1.5)
+   ax.set_aspect('equal')  # Assure un repère orthonormé
+   ax.set_xticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur x
+   ax.set_yticks(np.arange(-1.5, 1.6, 0.5))  # Graduations sur y
+   
+   # Étiquettes des axes et titre
+   ax.set_xlabel('$x$', fontsize=12)
+   ax.set_ylabel('$y$', fontsize=12)
+   ax.set_title(r"Frontière : $x^2 + y^2 = 1$", fontsize=14)
+   
+   # Affichage de la grille pour une meilleure lisibilité
+   ax.grid(True, linestyle='--', alpha=0.5)
+   
+   # Affichage du graphique
+   plt.show()
+   ```
+   :::
 
 ## Question 7
-Un vêtement pesant 50 grammes est plongée dans un bassin d'eau. En le sortant du bassin, au temps $t=0$, sa masse est de 200 grammes. On l'étend immédiatement sur une corde à linge pour qu'il sèche. On observe qu'après 180 minutes, sa masse est de 100 grammes. Combien de minutes se seront écoulées entre le moment où le vêtement est sorti du bassin et celui où il aura évacué 99\% de l'eau qu'il contenait initialement? Arrondissez à la minute. Pour répondre à cette question, on fera l'hypothèse que le taux d'évaporation d'eau dans le vêtement est proportionnel à la quantité d'eau présente dans celui-ci.
+
+   Soit $(E,d)$ un espace métrique et soit $f:E\rightarrow E$, une contration. Montrez que $f$ est continue. Rappelons qu'un fonction $f$ est continue en $x_0$ si pour tout $\varepsilon>0$, il existe $\delta>0$ tel que
+		\[x\in E~\text{et}~d(x_0,x)<\delta\Rightarrow d(f(x_0),f(x))<\varepsilon.\]
 
 ## Question 8
-Un réservoir contient initialement 100 kg de lait écrémé (le pourcentage de matière grasse du lait écrémé est de 0 %). Au temps $t=0$, on commence à y verser, à un taux constant de 10 kg/minute, du lait dont le pourcentage de matière grasse est de 4 %. Au même moment, un drain évacue le lait du réservoir vers le camion réfrigérée, à un taux constant de 10 kg/minute. Pour répondre à cette question, on fera l'hypothèse que le mélangeur du réservoir permet de garder son contenu homogène.
 
-#. Soit $M$ la masse (en kg) de matière grasse dans le réservoir en fonction du temps $t$ (en minutes). Trouvez la fonction $M(t)$.
-#. Évaluez $\lim_{t\rightarrow\infty}M(t)$.
+Assurez-vous de pouvoir définir sans aide chacun des objets mathématiques ci-dessous. Vérifiez vos réponses dans les notes de cours.
 
-:::{.solution}
-#. Pendant un petit intervalle de temps $\Delta t$ minutes, il entre 10$\Delta t$ kilogrammes de lait, qui contient une proportion 4/100 de matières grasses. Donc la masse de matières grasses entrant est
-   $$M_{\text{entrant}} = \frac{4}{100} \times 10\Delta t = 0{,}4 \Delta t$$
-
-   Pendant le même intervalle, il sort une masse $10\Delta t$ de lait. La proportion de matières grasses dans ce lait est $M(t)/100$. Ainsi, on a $$M_{\text{entrant}} = \frac{M(t)}{100} \times 10\Delta t = \frac{M(t)}{10} \Delta t.$$
-
-   Le changement dans $M(t)$ est donc
-   $$\Delta M = M_{\text{entrant}} - M_{\text{sortant}} = 0{,}4 \Delta t - \frac{M(t)}{10} \Delta t.$$
-   Ainsi 
-   $$\frac{\Delta M}{\Delta t} = 0{,}4 - \frac{M(t)}{10}.$$
-   Quand $\Delta t$ tend vers 0, le membre de gauche tend vers $M'(t)$, et on obtient
-   $$M'(t) = 0{,}4 - \frac{M(t)}{10}.$$
-   Cette équation est séparable. On a
-   $$\frac{dM}{0{,}4 - \frac{M}{10}} = dt,$$
-   qui est équivalente à 
-   $$\int \frac{10dM}{4 - M} = \int dt.$$
-   On intègre et on obtient que $$-10 \ln|4 - M| = t + C,$$ équation qui est équivalente à $$|4 - M| = ke^{-t/10}.$$
-   Puisque $M(0) = 0$, on en déduit que $k = 4$ et finalement $$M(t) = 4 - 4e^{-t/10}.$$
-
-#. Puisque $e^{-t/10} \to 0$ quand $t \to \infty$, on a $\lim_{t \to \infty} M(t) = 4$.
-   Intuitivement, ce résultat est évident car à la longue, on s'attend à ce que l'état initial devienne négligeable et que la proportion de gras dans le lait du réservoir soit la même que celle du lait qu'on y ajoute.
-:::
+- Une contraction sur $\left(\mathbb{R}^2,d_E\right)$.
+- Un sous-ensemble borné de $\left(\mathbb{R}^2,d_E\right)$.
+- Un sous-ensemble fermé de $\left(\mathbb{R}^2,d_E\right)$.
+- Un sous-ensemble compact de $\left(\mathbb{R}^2,d_E\right)$.
+- Une métrique sur un ensemble $X$.
+- Un espace métrique.
+- Une suite de Cauchy dans un espace métrique $(X,d)$.
+- Un espace métrique complet.

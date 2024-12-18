@@ -1,97 +1,232 @@
 ---
-title: "Les équations différentielles"
+title: "02 - Transformations du plan"
 author: "Jérôme Soucy"
 ---
 
 ## Question 1
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = 2xy$
+Soit l'application affine dont la représentation analytique est donnée par
 
-::: solution
-D'abord, on réorganise l'équation comme $\frac{1}{y}dy = 2x dx$. Nous avons divisé par $y$, que nous supposons différente de la fonction identiquement nulle pour la suite. Remarquons que la fonction identiquement nulle est une solution de l'équation différentielle.
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) = \left(\begin{array}{cc}1&-1\\2&0\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) + \left(\begin{array}{c}-1\\1\end{array}\right).
+$$
 
-Intégrons les deux membres de l'équation : $\int \frac{1}{y}dy = \int 2x dx$. Nous obtenons que$\ln|y| = x^2 + C$. En prenant l'exponentielle, nous obtenons que $|y|=e^{C}e^{x^2}$. Ainsi, $|y|=C_1e^{x^2}$, où $C_1$ est une constante strictement positive. De là nous avons que $y=C_2e^{x^2}$, où $C_2$ est une constante réelle non nulle. Finalement, on se rappelle que $y=0$ est solution de l'équation différentielle de départ, ce qui nous permet d'écrire que l'ensemble des solutions de l'équation différentielle est formé de toutes les fonctions de la forme $y=Ke^{x^2}, K\in\mathbb{R}$.
-:::
+1. Déterminez l'image du rectangle plein $\left\{(x,y) : x \in [0,2] ~\text{et}~y \in [0,1]\right\}$ par $w$.
+
+   ::: solution
+   C'est un parallélogramme (plein) de sommets $(-2,1), (-1,1), (1,5)$ et $(0,5)$.
+   :::
+
+2. Déterminez l'image par $w$ du triangle plein dont les sommets sont donnés par $$A = (1,1), B = (0,0) ~\text{et}~ C = (-1,1).$$
+
+   ::: solution
+   C'est un triangle (plein) de sommets $(-1,3), (-1,1)$ et $(-3,-1)$.
+   :::
 
 ## Question 2
 
-Résoudre l'équation différentielle $$\frac{dy}{dx} = \frac{x}{y}.$$
+Trouvez l'expression analytique de l'isométrie qui envoie le triangle de la figure 1 sur celui de la figure 2.
+
+![Figure 1](Triangle1.png){width=400px}
+
+![Figure 2](Triangle2.png){width=400px}
 
 ::: solution
-On sépare les variables pour obtenir l'équation $y dy = x dx$. On intègre ensuite les deux membres de l'équation : $\int y dy = \int x dx$. Nous obtenons que $\frac{y^2}{2} = \frac{x^2}{2} + C$. Ainsi, la solution générale est $$y = \pm\sqrt{x^2 + K},$$
-où $K$ est une constante arbitraire.
+L'expression analytique d'une telle isométrie peut être exprimée de la façon suivante :
+
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) = 
+\left(\begin{array}{cc}-\frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}\\
+-\frac{\sqrt{2}}{2}&-\frac{\sqrt{2}}{2}\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) + 
+\left(\begin{array}{c}1-\frac{\sqrt{2}}{4}\\\frac{\sqrt{2}}{4}\end{array}\right).
+$$
 :::
 
 ## Question 3
 
-Résoudre l'équation différentielle $$\frac{dy}{dx} = \frac{y}{x}.$$
+Trouvez l'expression analytique d'une application affine qui envoie le triangle de sommets $A = (-11,3)$, $B = (1,12)$ et $C = (-1,14)$ sur le triangle de sommets $P = (90,-68), Q = (69,-53)$ et $R = (83,-59)$. On sous-entend ici que le point $A$ est envoyé sur $P$, le point $B$ sur $Q$ et le point $C$ sur $R$. Il serait souhaitable d'utiliser un outil informatique pour faire les calculs.
 
 ::: solution
-On sépare les variables pour obtenir l'équation $\frac{dy}{y} = \frac{dx}{x}$. On a divisé par $y$, on supposera donc pour la suite que $y$ n'est pas identiquement nulle. On remarque aussi que la fonction identiquement nulle est une solution de l'équation différentielle.
+L'expression analytique de la transformation cherchée est :
 
-On intègre ensuite les deux membres de l'équation : $\int \frac{dy}{y} = \int \frac{dx}{x}$. Nous obtenons que $\ln|y| = \ln|x| + C$. Comme la fonction $\ln$ est une bijection des réels strictement positifs vers $\mathbb{R}$, il existe un unique $k\in\mathbb{R}_{>0}$ tel que $C=\ln k$. Ainsi,
-$$\ln|y| = \ln|x| + C=\ln|x| + \ln k=\ln k|x|.$$ L'injectivité de la fonction $\ln$ implique que
-$y=\pm k|x|$. Si on trace ces courbes, on constate qu'il s'agit des droites de pente non nulle passant par l'origine. Comme la droite $y(x)=0$ est une solution (on l'a remarqué plus tôt), l'ensemble des solutions consiste à être l'ensemble des droites passant par l'origine, c'est-à-dire aux courbes d'équation $y(x)=Dx, D\in\mathbb{R}$.
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) = 
+\left(\begin{array}{cc}-4&3\\2&-1\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) + 
+\left(\begin{array}{c}37\\-43\end{array}\right).
+$$
+
+**Imposition des conditions**
+
+Il faut déterminer $a, b, c, d, e$ et $f$ tels que la transformation
+
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) =
+\left(\begin{array}{cc}a & b \\ c & d\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) +
+\left(\begin{array}{c}e\\f\end{array}\right)
+$$
+
+soit telle que $w(A) = P$, $w(B) = Q$ et $w(C) = R$. Ces trois conditions se traduisent :
+
+$$
+w\left(\begin{array}{c}-11\\3\end{array}\right) =
+\left(\begin{array}{cc}a & b \\ c & d\end{array}\right)
+\left(\begin{array}{c}-11\\3\end{array}\right) +
+\left(\begin{array}{c}e\\f\end{array}\right) =
+\left(\begin{array}{c}90\\-68\end{array}\right),
+$$
+
+$$
+w\left(\begin{array}{c}1\\12\end{array}\right) =
+\left(\begin{array}{cc}a & b \\ c & d\end{array}\right)
+\left(\begin{array}{c}1\\12\end{array}\right) +
+\left(\begin{array}{c}e\\f\end{array}\right) =
+\left(\begin{array}{c}69\\-53\end{array}\right),
+$$
+
+$$
+w\left(\begin{array}{c}-1\\14\end{array}\right) =
+\left(\begin{array}{cc}a & b \\ c & d\end{array}\right)
+\left(\begin{array}{c}-1\\14\end{array}\right) +
+\left(\begin{array}{c}e\\f\end{array}\right) =
+\left(\begin{array}{c}83\\-59\end{array}\right),
+$$
+
+qui, sous forme d'équations, s'écrivent :
+
+$$
+\begin{align}
+-11a + 3b + e &= 90, \\
+-11c + 3d + f &= -68, \\
+a + 12b + e &= 69, \\
+c + 12d + f &= -53, \\
+-a + 14b + e &= 83, \\
+-c + 14d + f &= -59.
+\end{align}
+$$
+
+**Résolution des systèmes**
+
+On considère d'abord le système formé des équations ne contenant que les nombres $a,b$ et $e$ :
+
+$$
+\begin{aligned}
+-11a + 3b + e &= 90,\\
+a + 12b + e &= 69,\\
+-a + 14b + e &= 83.
+\end{aligned}
+$$
+
+Par la suite, on traite le système formé des équations ne contenant que les nombres $c,d$ et $f$ :
+
+$$
+\begin{align}
+-11c + 3d + f &= -68,\\
+c + 12d + f &= -53,\\
+-c + 14d + f &= -59.
+\end{align}
+$$
+
+Le premier système nous donne $a = -4$, $b = 3$ et $e = 37$, et le second conduit à $c = 2$, $d = -1$ et $f = -43$. Ainsi, la transformation cherchée est :
+
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) =
+\left(\begin{array}{cc}-4 & 3 \\ 2 & -1\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) +
+\left(\begin{array}{c}37\\-43\end{array}\right).
+$$
 :::
 
 ## Question 4
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = y^2$
+Trouvez l'image du point de coordonnées $(x,y)$ par une homothétie de centre $(h,k)$ et de rapport $c$. (Suggestion : translatez d'abord le point $(x,y)$ selon le vecteur $(-h,-k)$ avant d'effectuer l'homothétie, puis translatez le point obtenu selon le vecteur $(h,k)$.)
 
 ::: solution
-On constate que $y(x)=0$ est une solution. Maintenant, pour trouver les solutions non nulles, divisons par $y^2$ pour séparer les variables. On obtient ainsi que
-$$\frac{dy}{y^2} = dx.$$
-En intégrant chacun des membres de l'équation, nous obtenons que
-$$-\frac{1}{y} = x + C,$$
-où $C$ est une constante réelle arbitraire. On isole par la suite $y$, pour obtenir une solution de la forme
-$$y = -\frac{1}{x + K},$$
-où $K$ est une constante réelle arbitraire.
+C'est le point de coordonnées $\left(cx+h(1-c), cy+k(1-c)\right)$.
 :::
 
 ## Question 5
 
-Résoudre l'équation différentielle : $\frac{dy}{dx} = e^{x-y}$
+Trouvez deux similitudes qui envoient le segment $\mathcal{S}$, reliant les points $P = (-3,-1)$ et $Q = (-1,1)$, sur le segment $\mathcal{T}$, reliant les points $A = (3,1)$ et $B = (2,2)$. On sous-entend ici que le point $P$ est envoyé sur $A$, et le point $Q$ sur $B$.
 
 ::: solution
-Pour résoudre cette équation, commençons par réorganiser les termes afin de séparer les variables. En multipliant chaque membre par $e^y$, nous obtenons
-$$e^y dy = e^x dx.$$
-En intégrant chacun des membres de l'équation, nous obtenons que
-$$e^y = e^x + C,$$
-où $C$ est une constante réelle arbitraire. On isole par la suite $y$ en appliquant le logarithme naturel de chaque côté, pour obtenir une solution de la forme
-$$y(x) = \ln(e^x + C).$$
+Les expressions analytiques des deux similitudes cherchées sont les suivantes :
+
+$$
+w_1\left(\begin{array}{c}x\\y\end{array}\right) = 
+\left(\begin{array}{cc}0&-\frac{1}{2}\\\frac{1}{2}&0\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) + 
+\left(\begin{array}{c}\frac{5}{2}\\\frac{5}{2}\end{array}\right),
+$$
+
+$$
+w_2\left(\begin{array}{c}x\\y\end{array}\right) = 
+\left(\begin{array}{cc}-\frac{1}{2}&0\\0&\frac{1}{2}\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) + 
+\left(\begin{array}{c}\frac{3}{2}\\\frac{3}{2}\end{array}\right).
+$$
 :::
 
 ## Question 6
-Lorsqu'une personne avale une substance toxique, son foie tente de l'éliminer. Généralement, le taux d'élimination de la quantité de substance encore présente dans l'organisme au temps $t$ --- que nous noterons $Q(t)$ --- est proportionnel à la quantité de substance encore présente dans l'organisme au temps $t$. Au temps $t=0$, Jocelyn a avalé une quantité $Q_0$ d'un liquide toxique. Après 3 heures, on a estimé que son foie avait éliminé 50\% du liquide. D'après ce modèle, combien d'heures se seront écoulées entre le moment où Jocelyn a avalé le produit et celui où il en aura éliminé 90\%?
+
+Trouvez l'expression analytique de la transformation affine correspondant à la projection orthogonale sur la droite d'équation $y = x$.
+
+::: solution
+Si $w$ désigne la projection orthogonale sur la droite d'équation $y = x$, alors
+
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) = 
+\left(\begin{array}{cc}\frac{1}{2}&\frac{1}{2}\\\frac{1}{2}&\frac{1}{2}\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right).
+$$
+:::
 
 ## Question 7
-Un vêtement pesant 50 grammes est plongée dans un bassin d'eau. En le sortant du bassin, au temps $t=0$, sa masse est de 200 grammes. On l'étend immédiatement sur une corde à linge pour qu'il sèche. On observe qu'après 180 minutes, sa masse est de 100 grammes. Combien de minutes se seront écoulées entre le moment où le vêtement est sorti du bassin et celui où il aura évacué 99\% de l'eau qu'il contenait initialement? Arrondissez à la minute. Pour répondre à cette question, on fera l'hypothèse que le taux d'évaporation d'eau dans le vêtement est proportionnel à la quantité d'eau présente dans celui-ci.
+
+Soient $a,b,r\in]0,\infty[$, et $e,f\in\mathbb{R}$. Considérons l'application affine $w:\mathbb{R}^2\to \mathbb{R}^2$ dont l'expression analytique est donnée par
+
+$$
+w\left(\begin{array}{c}x\\y\end{array}\right) = 
+\left(\begin{array}{cc}a&0\\0&b\end{array}\right)
+\left(\begin{array}{c}x\\y\end{array}\right) + 
+\left(\begin{array}{c}e\\f\end{array}\right).
+$$
+
+Quelle est l'équation du lieu des points de $\mathbb{R}^2$ correspondant à l'image du cercle d'équation $x^2 + y^2 = r^2$ par $w$ ?
+
+::: solution
+Il s'agit d'une ellipse d'équation
+
+$$
+\frac{(x-e)^2}{(ar)^2} + \frac{(y-f)^2}{(br)^2} = 1,
+$$
+
+c'est-à-dire une ellipse centrée au point $(e,f)$ dont l'axe horizontal est de longueur $2ar$ et dont l'axe vertical est de longueur $2br$.
+:::
 
 ## Question 8
-Un réservoir contient initialement 100 kg de lait écrémé (le pourcentage de matière grasse du lait écrémé est de 0 %). Au temps $t=0$, on commence à y verser, à un taux constant de 10 kg/minute, du lait dont le pourcentage de matière grasse est de 4 %. Au même moment, un drain évacue le lait du réservoir vers le camion réfrigérée, à un taux constant de 10 kg/minute. Pour répondre à cette question, on fera l'hypothèse que le mélangeur du réservoir permet de garder son contenu homogène.
 
-#. Soit $M$ la masse (en kg) de matière grasse dans le réservoir en fonction du temps $t$ (en minutes). Trouvez la fonction $M(t)$.
-#. Évaluez $\lim_{t\rightarrow\infty}M(t)$.
+On considère le triangle rectangle $\mathcal{T}:=\Delta BAC$ illustré ci-dessous dont les côtés sont de longueur $a, b$ et $c$. Le triangle $\mathcal{T}$ est l'union des triangles rectangles $\mathcal{T}_1:=\Delta ADC$ et $\mathcal{T}_2:=\Delta BDC$.
 
-:::{.solution}
-#. Pendant un petit intervalle de temps $\Delta t$ minutes, il entre 10$\Delta t$ kilogrammes de lait, qui contient une proportion 4/100 de matières grasses. Donc la masse de matières grasses entrant est
-   $$M_{\text{entrant}} = \frac{4}{100} \times 10\Delta t = 0{,}4 \Delta t$$
+![Illustration du triangle rectangle](Pythagore.png)
 
-   Pendant le même intervalle, il sort une masse $10\Delta t$ de lait. La proportion de matières grasses dans ce lait est $M(t)/100$. Ainsi, on a $$M_{\text{entrant}} = \frac{M(t)}{100} \times 10\Delta t = \frac{M(t)}{10} \Delta t.$$
+1. Montrez que $\mathcal{T}_1$ et $\mathcal{T}_2$ sont semblables à $\mathcal{T}$.
 
-   Le changement dans $M(t)$ est donc
-   $$\Delta M = M_{\text{entrant}} - M_{\text{sortant}} = 0{,}4 \Delta t - \frac{M(t)}{10} \Delta t.$$
-   Ainsi 
-   $$\frac{\Delta M}{\Delta t} = 0{,}4 - \frac{M(t)}{10}.$$
-   Quand $\Delta t$ tend vers 0, le membre de gauche tend vers $M'(t)$, et on obtient
-   $$M'(t) = 0{,}4 - \frac{M(t)}{10}.$$
-   Cette équation est séparable. On a
-   $$\frac{dM}{0{,}4 - \frac{M}{10}} = dt,$$
-   qui est équivalente à 
-   $$\int \frac{10dM}{4 - M} = \int dt.$$
-   On intègre et on obtient que $$-10 \ln|4 - M| = t + C,$$ équation qui est équivalente à $$|4 - M| = ke^{-t/10}.$$
-   Puisque $M(0) = 0$, on en déduit que $k = 4$ et finalement $$M(t) = 4 - 4e^{-t/10}.$$
+2. D'après (a), il existe des similitudes $w_1$ et $w_2$ telles que $w_1(\mathcal{T})=\mathcal{T}_1$ et $w_2(\mathcal{T})=\mathcal{T}_2$. Soient $k_1$ et $k_2$, les rapports de similitude de $w_1$ et $w_2$ respectivement. Déterminez les valeurs de $k_1$ et $k_2$.
 
-#. Puisque $e^{-t/10} \to 0$ quand $t \to \infty$, on a $\lim_{t \to \infty} M(t) = 4$.
-   Intuitivement, ce résultat est évident car à la longue, on s'attend à ce que l'état initial devienne négligeable et que la proportion de gras dans le lait du réservoir soit la même que celle du lait qu'on y ajoute.
-:::
+   ::: solution
+   On trouve que $k_1 = \frac{a}{c}$ et $k_2 = \frac{b}{c}$.
+   :::
+
+3. Montrez que si $\mathcal{A}$ et $\mathcal{B}$ sont deux triangles semblables tels que $\mathcal{B}=w(\mathcal{A})$, où $w$ est une similitude de rapport $k$, alors Aire($\mathcal{B}$)=$k^2$Aire($\mathcal{A}$).
+
+4. Désignons par $s, s_1$ et $s_2$ les aires des triangles $\mathcal{T}, \mathcal{T}_1$ et $\mathcal{T}_2$ respectivement. Utiliser ce qui précède, et l'égalité $s = s_1 + s_2$ pour démontrer le théorème de Pythagore.
+
+5. Trouvez un ensemble $\mathcal{E}$ tel que $w_1(\mathcal{E})\cup w_2(\mathcal{E})=\mathcal{E}$.
+
+   ::: solution
+   On vérifie que $\mathcal{E} = \mathcal{T}$ fait l'affaire.
+   :::
