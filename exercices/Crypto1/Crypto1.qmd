@@ -37,69 +37,69 @@ Chiffrez le message _jaimelesexpos_ avec la méthode de Vigenère en utilisant l
 
 ## Question 5
 
-Soient \(a, b\) et \(c\) des entiers avec \(a \neq 0\). Montrez les énoncés ci-dessous.
+Soient $a, b$ et $c$ des entiers avec $a \neq 0$. Montrez les énoncés ci-dessous.
 
-1. Si \(a|b\), alors \(a|bc\).
-2. Si \(b \neq 0\), alors \(a|b\) et \(b|c\) entraînent que \(a|c\).
-3. Si \(a|b\) et \(a|c\), alors \(a|(bx+cy)\) pour tout \(x, y \in \mathbb{Z}\).
-4. Si \(b \neq 0\), le fait que \(a|b\) et \(b|a\) implique que \(a = \pm b\).
-5. Si \(c \neq 0\) et que \(a|b\), alors \(ac|bc\).
+1. Si $a|b$, alors $a|bc$.
+2. Si $b \neq 0$, alors $a|b$ et $b|c$ entraînent que $a|c$.
+3. Si $a|b$ et $a|c$, alors $a|(bx+cy)$ pour tout $x, y \in \mathbb{Z}$.
+4. Si $b \neq 0$, le fait que $a|b$ et $b|a$ implique que $a = \pm b$.
+5. Si $c \neq 0$ et que $a|b$, alors $ac|bc$.
 
 ::: solution
-1. Si \(a|b\), alors il existe \(k \in \mathbb{Z}\) tel que \(b = ka\). Ainsi, \(bc = kac = ja\), où \(j = kc \in \mathbb{Z}\). On a donc \(a|bc\).
+1. Si $a|b$, alors il existe $k \in \mathbb{Z}$ tel que $b = ka$. Ainsi, $bc = kac = ja$, où $j = kc \in \mathbb{Z}$. On a donc $a|bc$.
 
-2. Si \(a|b\) et \(b|c\), alors il existe \(k\) et \(j \in \mathbb{Z}\) tels que \(b = ka\) et \(c = jb\). Nous avons donc \(c = jka = la\), où \(l = jk \in \mathbb{Z}\). Cela montre que \(a\) divise \(c\).
+2. Si $a|b$ et $b|c$, alors il existe $k$ et $j \in \mathbb{Z}$ tels que $b = ka$ et $c = jb$. Nous avons donc $c = jka = la$, où $l = jk \in \mathbb{Z}$. Cela montre que $a$ divise $c$.
 
-3. Si \(a|b\) et \(a|c\), alors il existe \(k, j \in \mathbb{Z}\) tels que \(b = ka\) et \(c = ja\). Nous avons donc pour tout \(x, y \in \mathbb{Z}\),
-   \[
+3. Si $a|b$ et $a|c$, alors il existe $k, j \in \mathbb{Z}$ tels que $b = ka$ et $c = ja$. Nous avons donc pour tout $x, y \in \mathbb{Z}$,
+   $$
    bx + cy = kax + jay = (kx + jy)a = la,
-   \]
-   où \(l = kx + jy \in \mathbb{Z}\). Ainsi, \(a|(bx+cy)\).
+   $$
+   où $l = kx + jy \in \mathbb{Z}$. Ainsi, $a|(bx+cy)$.
 
-4. Si \(a|b\) et \(b|a\), alors il existe \(k, j \in \mathbb{Z}\) tels que \(b = ka\) et \(a = jb\). On doit donc avoir \(b = jka\). Comme \(b \neq 0\), \(jk = 1\). Les nombres \(j\) et \(k\) étant des entiers, \(j = k = 1\) ou \(j = k = -1\). Dans le premier cas, \(a = b\), et dans l'autre, \(a = -b\).
+4. Si $a|b$ et $b|a$, alors il existe $k, j \in \mathbb{Z}$ tels que $b = ka$ et $a = jb$. On doit donc avoir $b = jka$. Comme $b \neq 0$, $jk = 1$. Les nombres $j$ et $k$ étant des entiers, $j = k = 1$ ou $j = k = -1$. Dans le premier cas, $a = b$, et dans l'autre, $a = -b$.
 
-5. Si \(a|b\), alors il existe \(k \in \mathbb{Z}\) tel que \(b = ka\). On a donc \(bc = k(ac)\). Les nombres \(a\) et \(c\) étant tous les deux différents de 0, \(ac|bc\).
+5. Si $a|b$, alors il existe $k \in \mathbb{Z}$ tel que $b = ka$. On a donc $bc = k(ac)$. Les nombres $a$ et $c$ étant tous les deux différents de 0, $ac|bc$.
 :::
 
 ## Question 6
 
-Soient \(a, b, c, d\) et \(m\), des entiers avec \(m > 0\). Montrez chacune des énoncés ci-dessous.
+Soient $a, b, c, d$ et $m$, des entiers avec $m > 0$. Montrez chacune des énoncés ci-dessous.
 
-1. \(\text{mod}(a, b, m)\), \(\text{mod}(b, a, m)\) et \(\text{mod}(a-b, 0, m)\) sont des énoncés équivalents.
-2. Si \(\text{mod}(a, b, m)\) et \(\text{mod}(c, d, m)\), alors \(\text{mod}(a+c, b+d, m)\).
-3. Si \(\text{mod}(a, b, m)\) et \(\text{mod}(b, c, m)\), alors \(\text{mod}(a, c, m)\).
-4. Si \(\text{mod}(ax, ay, m)\) et que \(\gcd(a, m) = 1\), alors \(\text{mod}(x, y, m)\).
-5. \(\text{mod}(ax, ay, m)\) n'implique pas que \(\text{mod}(x, y, m)\).
+1. $\text{mod}(a, b, m)$, $\text{mod}(b, a, m)$ et $\text{mod}(a-b, 0, m)$ sont des énoncés équivalents.
+2. Si $\text{mod}(a, b, m)$ et $\text{mod}(c, d, m)$, alors $\text{mod}(a+c, b+d, m)$.
+3. Si $\text{mod}(a, b, m)$ et $\text{mod}(b, c, m)$, alors $\text{mod}(a, c, m)$.
+4. Si $\text{mod}(ax, ay, m)$ et que $\gcd(a, m) = 1$, alors $\text{mod}(x, y, m)$.
+5. $\text{mod}(ax, ay, m)$ n'implique pas que $\text{mod}(x, y, m)$.
 
 ::: solution
-1. Les preuves montrent que si \(m | (a-b)\), alors \(m | (b-a)\) et \(m | (a-b)\) implique que \(m | 0\). Ces relations prouvent l'équivalence des trois énoncés.
+1. Les preuves montrent que si $m | (a-b)$, alors $m | (b-a)$ et $m | (a-b)$ implique que $m | 0$. Ces relations prouvent l'équivalence des trois énoncés.
 
-2. Si \(m | (a-b)\) et \(m | (c-d)\), alors \(m | (a+c) - (b+d)\), ce qui donne \(\text{mod}(a+c, b+d, m)\).
+2. Si $m | (a-b)$ et $m | (c-d)$, alors $m | (a+c) - (b+d)$, ce qui donne $\text{mod}(a+c, b+d, m)$.
 
-3. Si \(m | (a-b)\) et \(m | (b-c)\), alors \(m | (a-c)\), ce qui donne \(\text{mod}(a, c, m)\).
+3. Si $m | (a-b)$ et $m | (b-c)$, alors $m | (a-c)$, ce qui donne $\text{mod}(a, c, m)$.
 
-4. Utilisation du lemme d'Euclide : si \(\gcd(a, m) = 1\), alors \(m | (x-y)\).
+4. Utilisation du lemme d'Euclide : si $\gcd(a, m) = 1$, alors $m | (x-y)$.
 
-5. Exemple : \(\text{mod}(2x, 2y, 10)\) mais \(\text{mod}(x, y, 5)\).
+5. Exemple : $\text{mod}(2x, 2y, 10)$ mais $\text{mod}(x, y, 5)$.
 :::
 
 ## Question 7
 
 En utilisant l'algorithme d'Euclide et des calculs supplémentaires, répondez aux questions ci-dessous.
 
-1. Trouvez le PGCD de \(42\,823\) et \(6\,409\).
-2. Trouvez \(x, y\) tels que \(42\,823x + 6\,409y = 17\).
-3. Factorisez \(42\,823\) et \(6\,409\) en nombres premiers.
+1. Trouvez le PGCD de $42\,823$ et $6\,409$.
+2. Trouvez $x, y$ tels que $42\,823x + 6\,409y = 17$.
+3. Factorisez $42\,823$ et $6\,409$ en nombres premiers.
 4. Retrouver le PGCD à partir des factorisations.
 
 ::: solution
-1. En appliquant l'algorithme d'Euclide, nous obtenons que \(\pgcd(42\,823, 6\,409) = 17\).
+1. En appliquant l'algorithme d'Euclide, nous obtenons que $\pgcd(42\,823, 6\,409) = 17$.
 
-2. En rétro-substituant dans les étapes de l'algorithme d'Euclide, nous trouvons \(x = -22\) et \(y = 147\).
+2. En rétro-substituant dans les étapes de l'algorithme d'Euclide, nous trouvons $x = -22$ et $y = 147$.
 
 3. Les factorisations premières sont :
-   - \(6\,409 = 13 \cdot 17 \cdot 29\)
-   - \(42\,823 = 11 \cdot 17 \cdot 229\)
+   - $6\,409 = 13 \cdot 17 \cdot 29$
+   - $42\,823 = 11 \cdot 17 \cdot 229$
 
-4. Le PGCD obtenu par les factorisations est \(17\), confirmant le résultat de l'algorithme d'Euclide.
+4. Le PGCD obtenu par les factorisations est $17$, confirmant le résultat de l'algorithme d'Euclide.
 :::
