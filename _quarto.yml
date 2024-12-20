@@ -20,29 +20,35 @@ language:
 book:
   title: "MAT-2901 : Mathématiques et technologie"
   author: "Jérôme Soucy"
+  sidebar:
+    foreground: info
+    background: light
   chapters:
     - index.qmd
-    - part: "Théorie"
-      chapters:
-      - theorie/TIntroFractales/TIntroFractales.qmd
-    - part: "Exercices"
-      chapters:
-      - exercices/IntroFractales/IntroFractales.qmd
-      - exercices/TransPlan/TransPlan.qmd
-      - exercices/EspacesMet/EspacesMet.qmd
-      - exercices/PtFixes/PtFixes.qmd
-      - exercices/SIF/SIF.qmd
-      - exercices/NumInfo/NumInfo.qmd
-      - exercices/Crypto1/Crypto1.qmd
-      - exercices/Crypto2/Crypto2.qmd
-      - exercices/Crypto3/Crypto3.qmd
-      - exercices/PSto1/PSto1.qmd
-      - exercices/PSto2/PSto2.qmd
-      - exercices/PSto3/PSto3.qmd
-      - exercices/GPS/GPS.qmd
-      - exercices/CG/CG.qmd
+#    - part: "Théorie"
+#      chapters:
+#      - theorie/TIntroFractales/TIntroFractales.qmd
+#    - part: "Exercices"
+#      chapters:
+    - exercices/IntroFractales/IntroFractales.qmd
+    - exercices/TransPlan/TransPlan.qmd
+    - exercices/EspacesMet/EspacesMet.qmd
+    - exercices/PtFixes/PtFixes.qmd
+    - exercices/SIF/SIF.qmd
+    - exercices/NumInfo/NumInfo.qmd
+    - exercices/Crypto1/Crypto1.qmd
+    - exercices/Crypto2/Crypto2.qmd
+    - exercices/Crypto3/Crypto3.qmd
+    - exercices/PSto1/PSto1.qmd
+    - exercices/PSto2/PSto2.qmd
+    - exercices/PSto3/PSto3.qmd
+    - exercices/GPS/GPS.qmd
+    - exercices/CG/CG.qmd
+highlight-style: pygments
 format:
   html:
+    grid:
+      sidebar-width: 300px
     theme:
       light: zephyr
       dark: [darkly, custom.scss]

@@ -1,21 +1,19 @@
 ---
-title: "11 - Processus stochastiques (partie 2)"
+title: "11 - Processus stochastiques (2/3)"
 author: "Jérôme Soucy"
 ---
 
 ## Question 1
 
-Construisez une procédurequi prend comme entrée un vecteur $\vec{v}$, et qui retourne un vecteur de probabilités colinéaire à $\vec{v}$. Vous pouvez prendre pour acquis que le vecteur donné en entrée admet un vecteur de probabilités qui lui est colinéaire.
-
----
+Construisez une procédure qui prend comme entrée un vecteur $\vec{v}$, et qui retourne un vecteur de probabilités colinéaire à $\vec{v}$.
 
 ## Question 2
 
 Dans une ville, on a remarqué qu'il y avait trois types de véhicules :
 
-- (A) les automobiles (berlines et coupés) ;
-- (V) les véhicules utilitaires sportifs ;
-- (C) les camionnettes.
+- les automobiles de type berlines et coupés (A) ;
+- les véhicules utilitaires sportifs (V);
+- les camionnettes (C).
 
 Chaque année, on observe les transitions suivantes :
 
@@ -36,8 +34,6 @@ En supposant que le nombre de véhicules reste constant, déterminez les proport
 3. 10 ans ;  
 4. À long terme.
 
----
-
 ## Question 3
 
 ([Source: Wikipédia](https://fr.wikipedia.org/wiki/Cha%C3%AEne_de_Markov#Exemple_:_Doudou_le_hamster))  
@@ -51,8 +47,6 @@ Les probabilités de transition sont les suivantes :
 
 Combien de temps Doudou passe-t-il à dormir en moyenne dans une journée ?
 
----
-
 ## Question 4
 
 Un policier contrôle la circulation aux 8 intersections illustrées ci-dessous. Lorsqu'il arrive à une intersection, il y demeure une heure, puis décide aléatoirement d’aller à une intersection voisine ou de rester à celle où il est. Chaque possibilité a la même probabilité d’être choisie. Par exemple :
@@ -61,4 +55,4 @@ Un policier contrôle la circulation aux 8 intersections illustrées ci-dessous.
 
 À la fin de sa journée de travail, il choisit une intersection voisine (ou la même) comme point de départ pour le lendemain. Déterminez le pourcentage de son temps de travail qu'il passe à chacune des intersections.
 
-![Schéma des intersections](Policier/policier.pdf)
+![Schéma des intersections](Policier/policier.png)

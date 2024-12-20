@@ -352,7 +352,7 @@ Pour chacun des ensembles ci-dessous, considérés dans l'espace métrique $\lef
 ## Question 7
 
    Soit $(E,d)$ un espace métrique et soit $f:E\rightarrow E$, une contration. Montrez que $f$ est continue. Rappelons qu'un fonction $f$ est continue en $x_0$ si pour tout $\varepsilon>0$, il existe $\delta>0$ tel que
-		\[x\in E~\text{et}~d(x_0,x)<\delta\Rightarrow d(f(x_0),f(x))<\varepsilon.\]
+		$$x\in E~\text{et}~d(x_0,x)<\delta\Rightarrow d(f(x_0),f(x))<\varepsilon.$$
 
 ## Question 8
 
