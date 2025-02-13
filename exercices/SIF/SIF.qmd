@@ -78,23 +78,23 @@ Soit $\mathcal{S}$ le SIF dont l'attracteur est représenté ci-dessous.
 
 1. Trouvez 3 fonctions $f_1, f_2$ et $f_3$ telles que $\mathcal{S} = \{f_1,f_2,f_3\}$.
 
-:::solution
-On trouve que
-$$
-f_1\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix}, \quad
-f_2\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} 8 \\ 0 \end{pmatrix}.
-$$
-Pour $f_3$, c'est la composée d'une rotation $r$, d'une contraction $c$ et d'une translation $t$. Ainsi,
-$$
-f_3\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 & -\frac{4}{5} \\ \frac{5}{16} & 0 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} 16 \\ 5 \end{pmatrix}.
-$$
+   :::solution
+   On trouve que
+   $$
+   f_1\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix} \begin{pmatrix} x \\ y    \end{pmatrix}, \quad
+   f_2\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix} \begin{pmatrix} x \\ y  \end{pmatrix} + \begin{pmatrix} 8 \\ 0 \end{pmatrix}.
+   $$
+   Pour $f_3$, c'est la composée d'une rotation $r$, d'une contraction $c$ et d'une translation $t$. Ainsi,
+   $$
+   f_3\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 & -\frac{4}{5} \\ \frac{5}{16} & 0 \end{pmatrix} \begin{pmatrix} x \\ y    \end{pmatrix} + \begin{pmatrix} 16 \\ 5 \end{pmatrix}.
+   $$
 :::
 
 2. Quelle est la dimension de similitude généralisée de $A$?
 
-:::solution
-Dans cette situation, nous ne sommes pas en mesure de déterminer la dimension de similitude de cet ensemble, ni même la dimension de similitude généralisée. En effet, l'une des transformations n'est pas une similitude.
-:::
+   :::solution
+   Dans cette situation, nous ne sommes pas en mesure de déterminer la dimension de similitude de cet ensemble, ni même la dimension de     similitude généralisée. En effet, l'une des transformations n'est pas une similitude.
+   :::
 
 
 ## Question 5
@@ -109,44 +109,44 @@ Soit $C = \{(x,y) : x,y \in [0,1]\}$.
 
 1. Représentez $C$ dans le plan.
 
-:::solution
-![Ensemble C](images/Carre1.png)
-:::
+   :::solution
+   ![Ensemble C](images/Carre1.png)
+   :::
 
 2. Trouvez $W(C)$ et le représenter dans le plan.
 
-:::solution
-![Ensemble W(C)](images/Carre2.png)
-:::
+   :::solution
+   ![Ensemble W(C)](images/Carre2.png)
+   :::
 
 3. Trouvez $W^{2}(C)$ et le représenter dans le plan.
 
-:::solution
-![Ensemble $W^{2}(C)$](images/Carre3.png)
-:::
+   :::solution
+   ![Ensemble $W^{2}(C)$](images/Carre3.png)
+   :::
 
 4. Que vaut $d_H(W(C),C)$?
 
-:::solution
-Du dessin ci-dessous, on déduit que $d_H(W(C),C) = \frac{\sqrt{17}}{6}$.
+   :::solution
+   Du dessin ci-dessous, on déduit que $d_H(W(C),C) = \frac{\sqrt{17}}{6}$.
 
-![Le point P est le point de C le plus éloigné des points appartenant à W(C).](images/Carre4.png)
-:::
+   ![Le point P est le point de C le plus éloigné des points appartenant à W(C).](images/Carre4.png)
+   :::
 
 5. Que vaut le rapport de contraction du SIF ?
 
-:::solution
-$\frac{1}{3}$
-:::
+   :::solution
+   $\frac{1}{3}$
+   :::
 
 6. Soit $A$ l'attracteur du SIF considéré. Utilisez le théorème de Hutchinson pour trouver une valeur de $n$ telle que
-$$
-d_{H}\left(W^{n}(C),A\right) \leq 0{,}01.
-$$
+   $$
+   d_{H}\left(W^{n}(C),A\right) \leq 0{,}01.
+   $$
 
-:::solution
-On doit choisir $n \geq 5$.
-:::
+   :::solution
+   On doit choisir $n \geq 5$.
+   :::
 
 
 ## Question 6 (Défi facultatif)
