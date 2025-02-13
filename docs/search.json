@@ -314,7 +314,7 @@
     "href": "exercices/SIF/SIF.html#question-1",
     "title": "05 - Les SIF",
     "section": "",
-    "text": "\\(A = \\{(x_1,y_1)\\}\\) et \\(B = \\{(x_2,y_2)\\}\\).\n\n\nSolution. \\(\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)\n\n\n\\(A = \\{(1,1)\\}\\) et \\(B = \\{(x,y) : x^2 + y^2 \\leq r^2\\}\\).\n\n\nSolution. \\(r + \\sqrt{2}\\)\n\n\n\\(A = \\{(x,0) : -1 \\leq x \\leq 1\\}\\) et \\(B = \\{(0,y) : -2 \\leq y \\leq 2\\}\\).\n\n\nSolution. \\(2\\)\n\n\n\\(A = \\{(x,y) : (x - h_1)^2 + (y - k_1)^2 \\leq r_1^2\\}\\) et \\(B = \\{(x,y) : (x - h_2)^2 + (y - k_2)^2 \\leq r_2^2\\}\\).\n\n\nSolution. \\(\\sqrt{(h_2 - h_1)^2 + (k_2 - k_1)^2} + |r_2 - r_1|\\)",
+    "text": "\\(A = \\{(x_1,y_1)\\}\\) et \\(B = \\{(x_2,y_2)\\}\\).\n\nSolution. \\(\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)\n\n\\(A = \\{(1,1)\\}\\) et \\(B = \\{(x,y) : x^2 + y^2 \\leq r^2\\}\\).\n\nSolution. \\(r + \\sqrt{2}\\)\n\n\\(A = \\{(x,0) : -1 \\leq x \\leq 1\\}\\) et \\(B = \\{(0,y) : -2 \\leq y \\leq 2\\}\\).\n\nSolution. \\(2\\)\n\n\\(A = \\{(x,y) : (x - h_1)^2 + (y - k_1)^2 \\leq r_1^2\\}\\) et \\(B = \\{(x,y) : (x - h_2)^2 + (y - k_2)^2 \\leq r_2^2\\}\\).\n\nSolution. \\(\\sqrt{(h_2 - h_1)^2 + (k_2 - k_1)^2} + |r_2 - r_1|\\)",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>05 - Les SIF</span>"
     ]
@@ -324,7 +324,7 @@
     "href": "exercices/SIF/SIF.html#question-2",
     "title": "05 - Les SIF",
     "section": "Question 2",
-    "text": "Question 2\nUn SIF est formé de deux similitudes de rapport \\(\\frac{1}{2}\\), et de trois similitudes de rapport \\(\\frac{1}{4}\\).\n\nQuel est le rapport de contraction du SIF ?\n\n\nSolution. \\(\\frac{1}{2}\\)\n\n\nQuelle est la dimension de similitude généralisée de l’attracteur du SIF ?\n\n\nSolution. \\(\\frac{\\ln 3}{\\ln 2}\\)\n\n\nSi le SIF avait plutôt été formé de deux contractions de rapport \\(\\frac{1}{2}\\), et de trois contractions de rapport \\(\\frac{1}{3}\\), quelle aurait été la dimension de similitude généralisée de son attracteur ?\n\n\nSolution. On ne peut trouver la valeur exacte. Une valeur approchée serait \\(d \\approx 1{,}788\\).",
+    "text": "Question 2\nUn SIF est formé de deux similitudes de rapport \\(\\frac{1}{2}\\), et de trois similitudes de rapport \\(\\frac{1}{4}\\).\n\nQuel est le rapport de contraction du SIF ?\n\nSolution. \\(\\frac{1}{2}\\)\n\nQuelle est la dimension de similitude généralisée de l’attracteur du SIF ?\n\nSolution. \\(\\frac{\\ln 3}{\\ln 2}\\)\n\nSi le SIF avait plutôt été formé de deux contractions de rapport \\(\\frac{1}{2}\\), et de trois contractions de rapport \\(\\frac{1}{3}\\), quelle aurait été la dimension de similitude généralisée de son attracteur ?\n\nSolution. On ne peut trouver la valeur exacte. Une valeur approchée serait \\(d \\approx 1{,}788\\).",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>05 - Les SIF</span>"
     ]
